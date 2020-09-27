@@ -68,7 +68,7 @@ class Main extends React.Component {
             caseStudies: [],
             isLoaderVisible: true
         }
-        this.baseUrl = "http://localhost:8000/wp-json/wp/v2/";
+        this.baseUrl = "http://fzd.df8.myftpupload.com/wp-json/wp/v2/";
         this.anim = '';
         this.revealRefs = React.createRef([]);
         this.revealRefs.current = [];
