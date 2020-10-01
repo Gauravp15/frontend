@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/frontend/static/css/main.06b57e70.chunk.css",
-    "main.js": "/frontend/static/js/main.a10782e1.chunk.js",
-    "main.js.map": "/frontend/static/js/main.a10782e1.chunk.js.map",
+    "main.css": "/frontend/static/css/main.3f071ea1.chunk.css",
+    "main.js": "/frontend/static/js/main.cff75430.chunk.js",
+    "main.js.map": "/frontend/static/js/main.cff75430.chunk.js.map",
     "runtime-main.js": "/frontend/static/js/runtime-main.12e52466.js",
     "runtime-main.js.map": "/frontend/static/js/runtime-main.12e52466.js.map",
     "static/css/2.764ccc25.chunk.css": "/frontend/static/css/2.764ccc25.chunk.css",
-    "static/js/2.4048d7ea.chunk.js": "/frontend/static/js/2.4048d7ea.chunk.js",
-    "static/js/2.4048d7ea.chunk.js.map": "/frontend/static/js/2.4048d7ea.chunk.js.map",
+    "static/js/2.e6a35a0f.chunk.js": "/frontend/static/js/2.e6a35a0f.chunk.js",
+    "static/js/2.e6a35a0f.chunk.js.map": "/frontend/static/js/2.e6a35a0f.chunk.js.map",
     "index.html": "/frontend/index.html",
-    "precache-manifest.24293807a4a9622ebdbdadac3c1b0a8a.js": "/frontend/precache-manifest.24293807a4a9622ebdbdadac3c1b0a8a.js",
+    "precache-manifest.615aaaca2201b277fd3648b35d1daa0e.js": "/frontend/precache-manifest.615aaaca2201b277fd3648b35d1daa0e.js",
     "service-worker.js": "/frontend/service-worker.js",
     "static/css/2.764ccc25.chunk.css.map": "/frontend/static/css/2.764ccc25.chunk.css.map",
-    "static/css/main.06b57e70.chunk.css.map": "/frontend/static/css/main.06b57e70.chunk.css.map",
-    "static/js/2.4048d7ea.chunk.js.LICENSE.txt": "/frontend/static/js/2.4048d7ea.chunk.js.LICENSE.txt",
+    "static/css/main.3f071ea1.chunk.css.map": "/frontend/static/css/main.3f071ea1.chunk.css.map",
+    "static/js/2.e6a35a0f.chunk.js.LICENSE.txt": "/frontend/static/js/2.e6a35a0f.chunk.js.LICENSE.txt",
     "static/media/algeq.svg": "/frontend/static/media/algeq.8bb9f03f.svg",
     "static/media/algeq2.svg": "/frontend/static/media/algeq2.263aeaaf.svg",
     "static/media/atulkhola.svg": "/frontend/static/media/atulkhola.d0ec216e.svg",
@@ -55,8 +55,8 @@
   "entrypoints": [
     "static/js/runtime-main.12e52466.js",
     "static/css/2.764ccc25.chunk.css",
-    "static/js/2.4048d7ea.chunk.js",
-    "static/css/main.06b57e70.chunk.css",
-    "static/js/main.a10782e1.chunk.js"
+    "static/js/2.e6a35a0f.chunk.js",
+    "static/css/main.3f071ea1.chunk.css",
+    "static/js/main.cff75430.chunk.js"
   ]
 }
