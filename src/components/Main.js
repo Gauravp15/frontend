@@ -1,8 +1,8 @@
 import React from 'react';
-import lottie from 'lottie-web';
-import { gsap, TweenLite, Power1, Power2, TimelineLite } from 'gsap';
+/* import lottie from 'lottie-web'; */
+import { gsap, TweenLite, Power1 } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { get } from 'lodash-es';
+import { get, slice } from 'lodash-es';
 import customFetch from '../utils/customFetch';
 /* import { Waypoint } from 'react-waypoint'; */
 /* Component imports */
@@ -12,6 +12,7 @@ import CaseStudy from './CaseStudy';
 import Articles from './Articles';
 import Interactions from './Interactions';
 import Testimonial from './Testimonial';
+import Insta from './Insta';
 import Cta from './Cta';
 import Icon from './Icon';
 /* Method imports */
@@ -66,9 +67,12 @@ class Main extends React.Component {
             testimonials: [],
             articles: [],
             caseStudies: [],
+            dribbbleShots: [],
+            insta:[],
             isLoaderVisible: true
         }
-        this.baseUrl = "http://fzd.df8.myftpupload.com/wp-json/wp/v2/";
+        /* this.baseUrl = "http://localhost:8000/wp-json/wp/v2/"; */
+        this.baseUrl = "https://pixelandpump.com/wp-json/wp/v2/";
         this.anim = '';
         this.revealRefs = React.createRef([]);
         this.revealRefs.current = [];
@@ -84,27 +88,32 @@ class Main extends React.Component {
         this.dataScroll.current = [];
         this.highlightScroll = React.createRef([]);
         this.highlightScroll.current = [];
-        this.timeline = gsap.timeline().pause();
     }
 
     componentDidMount() {
+        this.getDribbbleShots();
         this.getCaseStudies();
         this.getArticles();
         this.getTestimonials();
-        gsap.registerPlugin(ScrollTrigger, TweenLite, TimelineLite);
+        this.getInstaPics();
+        gsap.registerPlugin(ScrollTrigger, TweenLite);
 
         let sections = gsap.utils.toArray(this.sectionRefs.current);
         let descriptions = gsap.utils.toArray(this.revealRefs.current);
         let sectionRight = gsap.utils.toArray(this.sectionRight.current);
         let dataScroll = gsap.utils.toArray(this.dataScroll.current);
         let highlightScroll = gsap.utils.toArray(this.highlightScroll.current);
+        let leftElements = gsap.utils.toArray(this.leftElementRefs.current);
+        let rightElements = gsap.utils.toArray(this.rightElementRefs.current);
 
         gsap.set(sectionRight, { opacity: 0 });
+        gsap.set(leftElements, { opacity: 0 });
+        gsap.set(rightElements, { opacity: 0 });
         gsap.set(descriptions, { opacity: 0, y: 50 });
         gsap.set(dataScroll, { opacity: 0, y: 50 });
-        gsap.set(highlightScroll, { xPercent: -100 });
+        gsap.set(highlightScroll, { xPercent: 100 });
 
-        this.timeline.to(sectionRight[0], {
+        /* this.timeline.to(sectionRight[0], {
             autoAlpha: 1,
             duration: 0.5
         }).to([descriptions[0], descriptions[1]], {
@@ -115,7 +124,7 @@ class Main extends React.Component {
             autoAlpha: 1,
             duration: 0.5,
             y: 0
-        }, 2).to(highlightScroll[0], {
+        }, 2).to(highlightScroll, {
             xPercent: -100,
             duration: 15,
             ease: "none",
@@ -123,82 +132,7 @@ class Main extends React.Component {
                 xPercent: gsap.utils.unitize(x => parseFloat(x) % 100)
             },
             repeat: -1
-        })
-
-        sections.forEach((section, index) => {
-            /* const tl = gsap.timeline({ paused: true });
-            tl.to(sectionRight, {
-                autoAlpha: 1,
-                duration: 0.5
-            }).to(descriptions, {
-                autoAlpha: 1,
-                duration: 0.5,
-                y: 0
-            }, 1).to(dataScroll, {
-                autoAlpha: 1,
-                duration: 0.5,
-                y: 0
-            }, 2).to(highlightScroll, {
-                xPercent: -100,
-                duration: 15,
-                ease: "none",
-                modifiers: {
-                    xPercent: gsap.utils.unitize(x => parseFloat(x) % 100)
-                },
-                repeat: -1
-            }); */
-
-            /* ScrollTrigger.create({
-                trigger: section,
-                animation: tl,
-                start: "top +=70",
-                end: "bottom top",
-                scrub: 0.5,
-                once: true,
-                onEnter: () => this.goToSection(section, tl),
-                markers: true
-            });
-            ScrollTrigger.create({
-                trigger: section,
-                start: "bottom bottom",
-                scrub: 0.5,
-                once: true,
-                onEnterBack: () => this.goToSection(section),
-            }); */
-            sectionRight.forEach((sectionRight, index) => {
-                this.timeline.to(sectionRight, {
-                    autoAlpha: 1,
-                    duration: 0.5
-                });
-            });
-            descriptions.forEach((description, index) => {
-                this.timeline.to(description, {
-                    autoAlpha: 1,
-                    duration: 0.5,
-                    y: 0
-                }, 1);
-            });
-            dataScroll.forEach((dataScroll, index) => {
-                this.timeline.to(dataScroll, {
-                    autoAlpha: 1,
-                    duration: 0.5,
-                    y: 0
-                }, 2);
-            });
-            highlightScroll.forEach((hlScroll, index) => {
-                this.timeline.to(hlScroll, {
-                    xPercent: -100,
-                    duration: 15,
-                    ease: "none",
-                    modifiers: {
-                        xPercent: gsap.utils.unitize(x => parseFloat(x) % 100)
-                    },
-                    repeat: -1
-                });
-            });
-        });
-
-
+        }); */
 
 
         /* let proxy = { skew: 0 },
@@ -256,51 +190,171 @@ class Main extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         if (this.props.isLoaderVisible !== prevProps.isLoaderVisible) {
             //play tween
-            console.log('Tl', this.tl);
-            this.timeline.play();
+            //console.log('Tl', this.timeline);
+            this.activateScrollTrigger();
         }
     }
 
-    addToRevealRefs = el => {
-        if (el && !this.revealRefs.current.includes(el)) {
-            this.revealRefs.current.push(el);
+    addToRefs = (el, type) => {
+        switch(type){
+            case 'section':
+                if (el && !this.sectionRefs.current.includes(el)) {
+                    this.sectionRefs.current.push(el);
+                }
+            break;
+            case 'sectionRight':
+                if (el && !this.sectionRight.current.includes(el)) {
+                    this.sectionRight.current.push(el);
+                }
+            break;
+            case 'leftElement':
+                if (el && !this.leftElementRefs.current.includes(el)) {
+                    this.leftElementRefs.current.push(el);
+                }
+            break;
+            case 'rightElement':
+                if (el && !this.rightElementRefs.current.includes(el)) {
+                    this.rightElementRefs.current.push(el);
+                }
+            break;
+            case 'reveal':
+                if (el && !this.revealRefs.current.includes(el)) {
+                    this.revealRefs.current.push(el);
+                }
+            break;
+            case 'dataScroll':
+                if (el && !this.dataScroll.current.includes(el)) {
+                    this.dataScroll.current.push(el);
+                }
+            break;
+            case 'highlightScroll':
+                if (el && !this.highlightScroll.current.includes(el)) {
+                    this.highlightScroll.current.push(el);
+                }
+            break;
+            default:
+                if (el && !this.sectionRefs.current.includes(el)) {
+                    this.sectionRefs.current.push(el);
+                }
         }
     }
 
-    addToSectionRightRefs = el => {
-        if (el && !this.sectionRight.current.includes(el)) {
-            this.sectionRight.current.push(el);
-        }
-    }
+    activateScrollTrigger = () => {
+        let sections = gsap.utils.toArray(this.sectionRefs.current);
+        let descriptions = gsap.utils.toArray(this.revealRefs.current);
+        let sectionRight = gsap.utils.toArray(this.sectionRight.current);
+        let dataScroll = gsap.utils.toArray(this.dataScroll.current);
+        let highlightScroll = gsap.utils.toArray(this.highlightScroll.current);
+        let leftElements = gsap.utils.toArray(this.leftElementRefs.current);
+        let rightElements = gsap.utils.toArray(this.rightElementRefs.current);
 
-    addToLeftElementRefs = el => {
-        if (el && !this.leftElementRefs.current.includes(el)) {
-            this.leftElementRefs.current.push(el);
-        }
-    }
+        /* sections.forEach((section, i) => {
 
-    addToRightElementRefs = el => {
-        if (el && !this.rightElementRefs.current.includes(el)) {
-            this.rightElementRefs.current.push(el);
-        }
-    }
+            ScrollTrigger.create({
+                trigger: section,
+                pin: true,
+                scrub: 0.5
+            });
+        }); */
 
-    addToSectionRefs = el => {
-        if (el && !this.sectionRefs.current.includes(el)) {
-            this.sectionRefs.current.push(el);
-        }
-    }
+        sectionRight.forEach((sr, i) => {
+            gsap.to(sr, {
+                autoAlpha: 1,
+                duration: 1,
+                ease: Power1.easeIn,
+                scrollTrigger: {
+                    trigger: sections[i],
+                    start: "top +=70",
+                    end: "bottom top"
+                }
+            });
+        });
 
-    addToDataScrollRefs = el => {
-        if (el && !this.dataScroll.current.includes(el)) {
-            this.dataScroll.current.push(el);
-        }
-    }
+        leftElements.forEach((le, i) => {
+            gsap.to(leftElements, {
+                autoAlpha: 1,
+                duration: 1,
+                delay: 1,
+                ease: Power1.easeIn,
+                scrollTrigger: {
+                    trigger: sections[i],
+                    start: "top +=70",
+                    end: "bottom top",
+                }
+            });
+        });
 
-    addToHighlightScrollRefs = el => {
-        if (el && !this.highlightScroll.current.includes(el)) {
-            this.highlightScroll.current.push(el);
-        }
+        rightElements.forEach((re, i) => {
+            gsap.to(rightElements, {
+                autoAlpha: 1,
+                duration: 1,
+                delay: 2,
+                ease: Power1.easeIn,
+                scrollTrigger: {
+                    trigger: sections[i],
+                    start: "top +=70",
+                    end: "bottom top",
+                }
+            });
+        });
+
+        descriptions.forEach((desc, i) => {
+            gsap.to(descriptions, {
+                autoAlpha: 1,
+                duration: 1,
+                delay: 3,
+                y:0,
+                ease: Power1.easeIn,
+                scrollTrigger: {
+                    trigger: sections[i],
+                    start: "top +=70",
+                    end: "bottom top"
+                }
+            });
+        });
+
+        dataScroll.forEach((desc, i) => {
+            gsap.to(dataScroll, {
+                autoAlpha: 1,
+                duration: 1,
+                delay: 3.5,
+                y:0,
+                ease: Power1.easeIn,
+                scrollTrigger: {
+                    trigger: sections[i],
+                    start: "top +=70",
+                    end: "bottom top"
+                }
+            });
+        });
+
+        highlightScroll.forEach((hs, i) => {
+            gsap.to(highlightScroll, {
+                autoAlpha: 1,
+                duration: 1,
+                delay: 3.5,
+                y:0,
+                ease: Power1.easeIn,
+                scrollTrigger: {
+                    trigger: sections[i],
+                    start: "top +=70",
+                    end: "bottom top"
+                }
+            });
+            gsap.to(hs, {
+                xPercent: -100,
+                duration: 20,
+                delay: 5,
+                ease: "none",
+                modifiers: {
+                    xPercent: gsap.utils.unitize(x => parseFloat(x) % 100)
+                },
+                repeat: -1
+            });
+        });
+
+
+        //console.log(this.sectionRefs.current);
     }
 
     goToSection = (i, anim) => {
@@ -314,15 +368,36 @@ class Main extends React.Component {
         }
     }
 
+    getDribbbleShots = () => {
+        let dribbbleApiCall = customFetch(this.baseUrl + 'dribbble_shots?_embed&order=desc');
+
+        let dribbbleShots = [];
+        dribbbleApiCall.then(res => {
+            if (get(res, "status") === 200) {
+                get(res, "data", []).map((i, k) => {
+                    let shotData = {};
+                    shotData["animated"] = get(i, "content.rendered", "");
+                    shotData["thumbnail"] = get(i, "_embedded.wp:featuredmedia.0.source_url", "");
+                    shotData["url"] = get(i, "shot_linkout", "");
+                    shotData["title"] = get(i, "title.rendered", "");
+                    dribbbleShots.push(shotData);
+                });
+                this.setState({
+                    dribbbleShots
+                });
+            }
+        })
+    }
+
     getTestimonials = () => {
         let testimonialApiCall = customFetch(
-            this.baseUrl + 'testimonials?_embed',
+            this.baseUrl + 'testimonials?_embed&per_page=30&order=desc',
             "GET"
         );
 
         let testimonials = [];
         testimonialApiCall.then(res => {
-            if (get(res, "status", 200) === 200) {
+            if (get(res, "status") === 200) {
                 get(res, "data", []).map((i, k) => {
                     let testimonialData = {};
                     testimonialData["description"] = get(i, "content.rendered", "");
@@ -346,13 +421,13 @@ class Main extends React.Component {
 
     getCaseStudies = () => {
         let csApiCall = customFetch(
-            this.baseUrl + 'case_studies?_embed',
+            this.baseUrl + 'case_studies?_embed&order=desc',
             "GET"
         );
 
         let caseStudies = [];
         csApiCall.then(res => {
-            if (get(res, "status", 200) === 200) {
+            if (get(res, "status") === 200) {
                 get(res, "data", []).map((i, k) => {
                     let csData = {};
                     csData["description"] = get(i, "content.rendered", "");
@@ -384,7 +459,7 @@ class Main extends React.Component {
                     let articlesData = {};
                     articlesData["description"] = get(i, "content.rendered", "");
                     articlesData["title"] = get(i, "title.rendered", "");
-                    articlesData["linkOut"] = get(i, "acf.case_study_linkout", "");
+                    articlesData["linkOut"] = get(i, "acf.article_linkout", "");
                     articlesData["bgImg"] = get(i, "_embedded.wp:featuredmedia.0.source_url", "");
                     articles.push(articlesData);
                     articles.reverse();
@@ -398,36 +473,64 @@ class Main extends React.Component {
         });
     }
 
+    getInstaPics = () => {
+        let instaApiCall = customFetch(
+            this.baseUrl + 'insta?_embed&per_page=20&order=desc',
+            "GET"
+        );
+
+        let insta = [];
+        instaApiCall.then(res => {
+            if (get(res, "status", 200) === 200) {
+                get(res, "data", []).map((i, k) => {
+                    let instaData = {};
+                    instaData["title"] = get(i, "title.rendered", "");
+                    instaData["url"] = get(i, "acf.insta_linkout", "");
+                    instaData["thumbnail"] = get(i, "_embedded.wp:featuredmedia.0.source_url", "");
+                    insta.push(instaData);
+                    insta.reverse();
+                });
+                this.setState({
+                    insta
+                })
+            }
+        }).catch(e => {
+            console.log('Artices', e);
+        });
+    }
+
 
     render() {
+        let dribbbleTopList = slice(this.state.dribbbleShots, 0, this.state.dribbbleShots.length / 2),
+            dribbbleBottomList = slice(this.state.dribbbleShots, this.state.dribbbleShots.length / 2, this.state.dribbbleShots.length);
         return (
             <div className="main">
                 {/* Header */}
                 <Header />
                 {/* Intro section */}
-                <section className="section introSection" id="section0" ref={this.addToSectionRefs}>
+                <section className="section introSection" id="section0" ref={(e) => {this.addToRefs(e, 'section')}}>
                     <div className="containerRight fullHeight">
                         <div className="sectionWrapper fullHeight">
                             <div className="sectionLeft">
-                                <span className="introTitle" ref={this.addToRevealRefs}>Hello, I am Atul Khola</span>
-                                <p className="introDescription" ref={this.addToRevealRefs}>a product designer with passion for human centered design that empowers people &amp; communities.</p>
+                                <span className="introTitle" ref={(e) => {this.addToRefs(e, 'reveal')}}>Hello, I am Atul Khola</span>
+                                <p className="introDescription" ref={(e) => {this.addToRefs(e, 'reveal')}}>a product designer with passion for human centered design that empowers people &amp; communities.</p>
                             </div>
-                            <div className="sectionRight" ref={this.addToSectionRightRefs}>
-                                <span className="bulb" ref={this.addToLeftElementRefs}><img src={bulb} alt="bulb" /></span>
-                                <span className="pen" ref={this.addToLeftElementRefs}><img src={pen} alt="pen" /></span>
-                                <span className="colordrop" ref={this.addToRightElementRefs}><img src={colordrop} alt="colordrop" /></span>
-                                <span className="selection" ref={this.addToRightElementRefs}><img src={selection} alt="selection" /></span>
-                                <span className="chat" ref={this.addToLeftElementRefs}><img src={chat} alt="chat" /></span>
+                            <div className="sectionRight" ref={(e) => {this.addToRefs(e, 'sectionRight')}}>
+                                <span className="bulb" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={bulb} alt="bulb" /></span>
+                                <span className="pen" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={pen} alt="pen" /></span>
+                                <span className="colordrop" ref={(e) => {this.addToRefs(e, 'rightElement')}}><img src={colordrop} alt="colordrop" /></span>
+                                <span className="selection" ref={(e) => {this.addToRefs(e, 'rightElement')}}><img src={selection} alt="selection" /></span>
+                                <span className="chat" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={chat} alt="chat" /></span>
                                 <div className="atulImg">
                                     <img src={intro} alt="Atul Khola" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="highlights" ref={this.addToDataScrollRefs}>
+                    <div className="highlights" ref={(e) => {this.addToRefs(e, 'dataScroll')}}>
                         <div className="containerRight">
                             <span className="highlightTitle">my skill set</span>
-                            <ul className="highlightList highlightScroll" ref={this.addToHighlightScrollRefs}>
+                            <ul className="highlightList highlightScroll" ref={(e) => {this.addToRefs(e, 'highlightScroll')}}>
                                 <li className="highlightItem">User experience design</li>
                                 <li className="highlightItem">User Interface design</li>
                                 <li className="highlightItem">Interaction design</li>
@@ -438,31 +541,31 @@ class Main extends React.Component {
                     </div>
                 </section>
                 {/* Second section */}
-                <section className="section introSection" id="section1" ref={this.addToSectionRefs}>
+                <section className="section introSection" id="section1" ref={(e) => {this.addToRefs(e, 'section')}}>
                     <div className="containerRight fullHeight">
                         <div className="sectionWrapper fullHeight">
                             <div className="sectionLeft">
-                                <p className="introDescription" ref={this.addToRevealRefs}>I am not great at maths but one equation I never get wrong</p>
+                                <p className="introDescription" ref={(e) => {this.addToRefs(e, 'reveal')}}>I am not great at maths but one equation I never get wrong</p>
                                 <div className="equation" />
                             </div>
                             <div className="sectionRight" ref={this.addToSectionRightRefs}>
-                                <span className="questionMark" ref={this.addToLeftElementRefs}><img src={questionMark} alt="questionMark" /></span>
-                                <span className="questionMark1" ref={this.addToLeftElementRefs}><img src={questionMark} alt="questionMark" /></span>
+                                <span className="questionMark" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={questionMark} alt="questionMark" /></span>
+                                <span className="questionMark1" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={questionMark} alt="questionMark" /></span>
                                 <span className="questionMark2"><img src={questionMark} alt="questionMark" /></span>
-                                <span className="triangle" ref={this.addToRightElementRefs}><img src={triangle} alt="triangle" /></span>
-                                <span className="algeq" ref={this.addToLeftElementRefs}><img src={algeq} alt="algeq" /></span>
-                                <span className="cone" ref={this.addToLeftElementRefs}><img src={cone} alt="cone" /></span>
-                                <span className="algeq2" ref={this.addToRightElementRefs}><img src={algeq2} alt="algeq2" /></span>
+                                <span className="triangle" ref={(e) => {this.addToRefs(e, 'rightElement')}}><img src={triangle} alt="triangle" /></span>
+                                <span className="algeq" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={algeq} alt="algeq" /></span>
+                                <span className="cone" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={cone} alt="cone" /></span>
+                                <span className="algeq2" ref={(e) => {this.addToRefs(e, 'rightElement')}}><img src={algeq2} alt="algeq2" /></span>
                                 <div className="atulImg">
                                     <img src={maths} alt="Atul Khola - Not good at maths" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="highlights" ref={this.addToDataScrollRefs}>
+                    <div className="highlights" ref={(e) => {this.addToRefs(e, 'dataScroll')}}>
                         <div className="containerRight">
                             <span className="highlightTitle">my tool box</span>
-                            <ul className="highlightList highlightScroll" ref={this.addToHighlightScrollRefs}>
+                            <ul className="highlightList highlightScroll" ref={(e) => {this.addToRefs(e, 'highlightScroll')}}>
                                 <li className="highlightItem">Sketch</li>
                                 <li className="highlightItem">After Effects</li>
                                 <li className="highlightItem">Principle</li>
@@ -480,18 +583,18 @@ class Main extends React.Component {
                     </div>
                 </section>
                 {/* Third section */}
-                <section className="section introSection" id="section2" ref={this.addToSectionRefs}>
+                <section className="section introSection" id="section2" ref={(e) => {this.addToRefs(e, 'section')}}>
                     <div className="containerRight fullHeight">
                         <div className="sectionWrapper fullHeight">
                             <div className="sectionLeft">
-                                <span className="introTitle" ref={this.addToRevealRefs}>I take my fitness seriously, </span>
-                                <p className="introDescription" ref={this.addToRevealRefs}>to take my productivity and job performance even more seriously.</p>
+                                <span className="introTitle" ref={(e) => {this.addToRefs(e, 'reveal')}}>I take my fitness seriously, </span>
+                                <p className="introDescription" ref={(e) => {this.addToRefs(e, 'reveal')}}>to take my productivity and job performance even more seriously.</p>
                             </div>
                             <div className="sectionRight" ref={this.addToSectionRightRefs}>
-                                <span className="barbell" ref={this.addToLeftElementRefs}><img src={barbell} alt="barbell" /></span>
-                                <span className="rope" ref={this.addToRightElementRefs}><img src={rope} alt="rope" /></span>
-                                <span className="stroke2" ref={this.addToLeftElementRefs}><img src={stroke3} alt="stroke2" /></span>
-                                <span className="stroke3" ref={this.addToLeftElementRefs}><img src={stroke2} alt="stroke3" /></span>
+                                <span className="barbell" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={barbell} alt="barbell" /></span>
+                                <span className="rope" ref={(e) => {this.addToRefs(e, 'rightElement')}}><img src={rope} alt="rope" /></span>
+                                <span className="stroke2" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={stroke3} alt="stroke2" /></span>
+                                <span className="stroke3" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={stroke2} alt="stroke3" /></span>
                                 <div className="atulImg">
                                     <img src={productivity} alt="Atul Khola - Productivity" />
                                 </div>
@@ -511,12 +614,12 @@ class Main extends React.Component {
                     </div>
                 </section>
                 {/* Fourth section */}
-                <section className="section introSection" id="section3" ref={this.addToSectionRefs}>
+                <section className="section introSection" id="section3" ref={(e) => {this.addToRefs(e, 'section')}}>
                     <div className="containerRight fullHeight">
                         <div className="sectionWrapper fullHeight">
                             <div className="sectionLeft">
-                                <span className="introTitle" ref={this.addToRevealRefs}>Apart from lifting weights, I also lift moods with</span>
-                                <p className="introDescription" ref={this.addToRevealRefs}>Surprise PIZZAS for the team. Le Pizza fairy</p>
+                                <span className="introTitle" ref={(e) => {this.addToRefs(e, 'reveal')}}>Apart from lifting weights, I also lift moods with</span>
+                                <p className="introDescription" ref={(e) => {this.addToRefs(e, 'reveal')}}>Surprise PIZZAS for the team. Le Pizza fairy</p>
                             </div>
                             <div className="sectionRight liftMoodsRight" ref={this.addToSectionRightRefs}>
                                 <span className="halo"><img src={halo} alt="halo" /></span>
@@ -532,7 +635,7 @@ class Main extends React.Component {
                     </div>
                 </section>
                 {/* Case studies */}
-                <section className="section introSection lightSection" id="section4" ref={this.addToSectionRefs}>
+                <section className="section introSection lightSection" id="section4" ref={(e) => {this.addToRefs(e, 'section')}}>
                     <div className="containerRight fullHeight">
                         <div className="titleWrapper">
                             <h2 className="sectionTitle darkText">Case Studies</h2>
@@ -563,7 +666,7 @@ class Main extends React.Component {
                     </div>
                 </section>
                 {/* Articles */}
-                <section className="section introSection" id="section4" ref={this.addToSectionRefs}>
+                <section className="section introSection" id="section4" ref={(e) => {this.addToRefs(e, 'section')}}>
                     <div className="containerRight fullHeight">
                         <div className="titleWrapper">
                             <h2 className="sectionTitle">Articles</h2>
@@ -574,6 +677,7 @@ class Main extends React.Component {
                                     mode="light"
                                     className="ctaText"
                                 />
+                                <span className="ctaArrow"><Icon icon={"arrow-right2"} size={20} /></span>
                             </div>
                         </div>
                         <div className="dataWrapper dataHighlightScroll">
@@ -593,7 +697,7 @@ class Main extends React.Component {
                     </div>
                 </section>
                 {/* Interactions */}
-                <section className="section introSection lightSection" id="section5" ref={this.addToSectionRefs}>
+                <section className="section introSection lightSection" id="section5" ref={(e) => {this.addToRefs(e, 'section')}}>
                     <div className="containerRight fullHeight">
                         <div className="titleWrapper">
                             <h2 className="sectionTitle darkText">Interactions</h2>
@@ -607,24 +711,42 @@ class Main extends React.Component {
                                 <span className="ctaArrow darkText"><Icon icon={"arrow-right2"} size={20} /></span>
                             </div>
                         </div>
-                        <div className="dataWrapper highlightScroll">
+                        <div className="dataWrapper dblScroll">
                             <div className="topIntList">
-                                <Interactions
-                                    intImg={interactionImg}
-                                    intTitle="Test"
-                                />
+                                {
+                                    dribbbleTopList.map((i, k) => {
+                                        return (
+                                            <Interactions
+                                                key={i.title + k}
+                                                intImg={i.thumbnail}
+                                                intImgH={i.animated}
+                                                title={i.title}
+                                                linkOut={i.url}
+                                            />
+                                        )
+                                    })
+                                }
                             </div>
                             <div className="bottomIntList">
-                                <Interactions
-                                    intImg={interactionImg}
-                                    intTitle="Test"
-                                />
+                                {
+                                    dribbbleBottomList.map((i, k) => {
+                                        return (
+                                            <Interactions
+                                                key={i.title + k}
+                                                intImg={i.thumbnail}
+                                                intImgH={i.animated}
+                                                title={i.title}
+                                                linkOut={i.url}
+                                            />
+                                        )
+                                    })
+                                }
                             </div>
                         </div>
                     </div>
                 </section>
                 {/* Testimonials */}
-                <section className="section introSection lightSection" id="section5" ref={this.addToSectionRefs}>
+                <section className="section introSection lightSection" id="section5" ref={(e) => {this.addToRefs(e, 'section')}}>
                     <div className="containerRight fullHeight">
                         <div className="titleWrapper blockWrapper">
                             <span className="introTitle darkText">The best part about the job</span>
@@ -649,8 +771,33 @@ class Main extends React.Component {
                         </div>
                     </div>
                 </section>
+                {/* Instagram */}
+                <section className="section introSection" id="section5" ref={(e) => {this.addToRefs(e, 'section')}}>
+                    <div className="containerRight fullHeight">
+                        <div className="titleWrapper blockWrapper">
+                            <span className="introTitle">&amp; there's so much more to life than</span>
+                            <h2 className="sectionTitle">just work ✨</h2>
+                        </div>
+                        <div className="dataWrapper dataHighlightScroll">
+                            <div className="topIntList">
+                                {
+                                    this.state.insta.map((i, k) => {
+                                        return (
+                                            <Insta
+                                                key={i.title + k}
+                                                instaImg={i.thumbnail}
+                                                title={i.title}
+                                                linkOut={i.url}
+                                            />
+                                        )
+                                    })
+                                }
+                            </div>                        
+                        </div>
+                    </div>
+                </section>
                 {/* Contact */}
-                <section className="section introSection" id="section6" ref={this.addToSectionRefs}>
+                <section className="section introSection" id="section6" ref={(e) => {this.addToRefs(e, 'section')}}>
                     <div className="containerRight fullHeight">
                         <div className="sectionWrapper fullHeight">
                             <div className="sectionLeft fullHeight">
