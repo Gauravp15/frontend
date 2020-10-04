@@ -34,19 +34,6 @@ object-assign
 */
 
 /*!
- * ScrollMagic v2.0.7 (2019-05-07)
- * The javascript library for magical scroll interactions.
- * (c) 2019 Jan Paepke (@janpaepke)
- * Project Website: http://scrollmagic.io
- * 
- * @version 2.0.7
- * @license Dual licensed under MIT license and GPL.
- * @author Jan Paepke - e-mail@janpaepke.de
- *
- * @file Debug Extension for ScrollMagic.
- */
-
-/*!
  * ScrollToPlugin 3.5.1
  * https://greensock.com
  *
