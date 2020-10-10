@@ -43,6 +43,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: var(--mainBgColor);
   font-size: 16px;
+  scrollbar-width: none;
 }
 
 a {
@@ -261,6 +262,9 @@ ul {
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
+}
+.atulImg canvas{
+  max-width: 100%;
 }
 .atulImg img {
   max-width: 100%;
@@ -559,6 +563,8 @@ ul {
 .dblScroll{
   overflow-x: scroll;
   overflow-y: hidden;
+  padding-left: 80px;
+  scrollbar-width: none;
 }
 .topIntList {
   margin-bottom: 20px;
@@ -598,6 +604,8 @@ ul {
   align-items: center;
   overflow-y: hidden;
   overflow-x: auto;
+  padding-left: 80px;
+  scrollbar-width: none;
 }
 .testiWrapper {
   position: relative;
@@ -627,6 +635,7 @@ ul {
   max-height: 280px;
   overflow: auto;
   padding: 0px 20px 0px;
+  scrollbar-width: none;
 }
 .testiTitleWrapper,
 .testiDescriptionWrapper p {
@@ -679,6 +688,11 @@ ul {
   height: 300px;
   display: block;
   margin-right: 20px;
+}
+.dFlex{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 /* ==========CTA============ */
 .ctaWrapper {

@@ -8,6 +8,7 @@ import customFetch from '../utils/customFetch';
 /* Component imports */
 import '../index.css';
 import Header from './Header';
+import Glitch from './Glitch';
 import CaseStudy from './CaseStudy';
 import Articles from './Articles';
 import Interactions from './Interactions';
@@ -68,7 +69,7 @@ class Main extends React.Component {
             articles: [],
             caseStudies: [],
             dribbbleShots: [],
-            insta:[],
+            insta: [],
             isLoaderVisible: true
         }
         /* this.baseUrl = "http://localhost:8000/wp-json/wp/v2/"; */
@@ -196,42 +197,42 @@ class Main extends React.Component {
     }
 
     addToRefs = (el, type) => {
-        switch(type){
+        switch (type) {
             case 'section':
                 if (el && !this.sectionRefs.current.includes(el)) {
                     this.sectionRefs.current.push(el);
                 }
-            break;
+                break;
             case 'sectionRight':
                 if (el && !this.sectionRight.current.includes(el)) {
                     this.sectionRight.current.push(el);
                 }
-            break;
+                break;
             case 'leftElement':
                 if (el && !this.leftElementRefs.current.includes(el)) {
                     this.leftElementRefs.current.push(el);
                 }
-            break;
+                break;
             case 'rightElement':
                 if (el && !this.rightElementRefs.current.includes(el)) {
                     this.rightElementRefs.current.push(el);
                 }
-            break;
+                break;
             case 'reveal':
                 if (el && !this.revealRefs.current.includes(el)) {
                     this.revealRefs.current.push(el);
                 }
-            break;
+                break;
             case 'dataScroll':
                 if (el && !this.dataScroll.current.includes(el)) {
                     this.dataScroll.current.push(el);
                 }
-            break;
+                break;
             case 'highlightScroll':
                 if (el && !this.highlightScroll.current.includes(el)) {
                     this.highlightScroll.current.push(el);
                 }
-            break;
+                break;
             default:
                 if (el && !this.sectionRefs.current.includes(el)) {
                     this.sectionRefs.current.push(el);
@@ -261,12 +262,7 @@ class Main extends React.Component {
             gsap.to(sr, {
                 autoAlpha: 1,
                 duration: 1,
-                ease: Power1.easeIn,
-                scrollTrigger: {
-                    trigger: sections[i],
-                    start: "top +=70",
-                    end: "bottom top"
-                }
+                ease: Power1.easeIn
             });
         });
 
@@ -276,11 +272,6 @@ class Main extends React.Component {
                 duration: 1,
                 delay: 1,
                 ease: Power1.easeIn,
-                scrollTrigger: {
-                    trigger: sections[i],
-                    start: "top +=70",
-                    end: "bottom top",
-                }
             });
         });
 
@@ -289,12 +280,7 @@ class Main extends React.Component {
                 autoAlpha: 1,
                 duration: 1,
                 delay: 2,
-                ease: Power1.easeIn,
-                scrollTrigger: {
-                    trigger: sections[i],
-                    start: "top +=70",
-                    end: "bottom top",
-                }
+                ease: Power1.easeIn
             });
         });
 
@@ -303,13 +289,8 @@ class Main extends React.Component {
                 autoAlpha: 1,
                 duration: 1,
                 delay: 3,
-                y:0,
-                ease: Power1.easeIn,
-                scrollTrigger: {
-                    trigger: sections[i],
-                    start: "top +=70",
-                    end: "bottom top"
-                }
+                y: 0,
+                ease: Power1.easeIn
             });
         });
 
@@ -318,13 +299,8 @@ class Main extends React.Component {
                 autoAlpha: 1,
                 duration: 1,
                 delay: 3.5,
-                y:0,
-                ease: Power1.easeIn,
-                scrollTrigger: {
-                    trigger: sections[i],
-                    start: "top +=70",
-                    end: "bottom top"
-                }
+                y: 0,
+                ease: Power1.easeIn
             });
         });
 
@@ -333,13 +309,8 @@ class Main extends React.Component {
                 autoAlpha: 1,
                 duration: 1,
                 delay: 3.5,
-                y:0,
-                ease: Power1.easeIn,
-                scrollTrigger: {
-                    trigger: sections[i],
-                    start: "top +=70",
-                    end: "bottom top"
-                }
+                y: 0,
+                ease: Power1.easeIn
             });
             gsap.to(hs, {
                 xPercent: -100,
@@ -508,29 +479,32 @@ class Main extends React.Component {
                 {/* Header */}
                 <Header />
                 {/* Intro section */}
-                <section className="section introSection" id="section0" ref={(e) => {this.addToRefs(e, 'section')}}>
+                <section className="section introSection" id="section0" ref={(e) => { this.addToRefs(e, 'section') }}>
                     <div className="containerRight fullHeight">
                         <div className="sectionWrapper fullHeight">
                             <div className="sectionLeft">
-                                <span className="introTitle" ref={(e) => {this.addToRefs(e, 'reveal')}}>Hello, I am Atul Khola</span>
-                                <p className="introDescription" ref={(e) => {this.addToRefs(e, 'reveal')}}>a product designer with passion for human centered design that empowers people &amp; communities.</p>
+                                <span className="introTitle" ref={(e) => { this.addToRefs(e, 'reveal') }}>Hello, I am Atul Khola</span>
+                                <p className="introDescription" ref={(e) => { this.addToRefs(e, 'reveal') }}>a product designer with passion for human centered design that empowers people &amp; communities.</p>
                             </div>
-                            <div className="sectionRight" ref={(e) => {this.addToRefs(e, 'sectionRight')}}>
-                                <span className="bulb" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={bulb} alt="bulb" /></span>
-                                <span className="pen" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={pen} alt="pen" /></span>
-                                <span className="colordrop" ref={(e) => {this.addToRefs(e, 'rightElement')}}><img src={colordrop} alt="colordrop" /></span>
-                                <span className="selection" ref={(e) => {this.addToRefs(e, 'rightElement')}}><img src={selection} alt="selection" /></span>
-                                <span className="chat" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={chat} alt="chat" /></span>
+                            <div className="sectionRight" ref={(e) => { this.addToRefs(e, 'sectionRight') }}>
+                                <span className="bulb" ref={(e) => { this.addToRefs(e, 'leftElement') }}><img src={bulb} alt="bulb" /></span>
+                                <span className="pen" ref={(e) => { this.addToRefs(e, 'leftElement') }}><img src={pen} alt="pen" /></span>
+                                <span className="colordrop" ref={(e) => { this.addToRefs(e, 'rightElement') }}><img src={colordrop} alt="colordrop" /></span>
+                                <span className="selection" ref={(e) => { this.addToRefs(e, 'rightElement') }}><img src={selection} alt="selection" /></span>
+                                <span className="chat" ref={(e) => { this.addToRefs(e, 'leftElement') }}><img src={chat} alt="chat" /></span>
                                 <div className="atulImg">
-                                    <img src={intro} alt="Atul Khola" />
+                                    <Glitch
+                                        imagePath={intro}
+                                    />
+                                    {/* <img src={intro} alt="Atul Khola" /> */}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="highlights" ref={(e) => {this.addToRefs(e, 'dataScroll')}}>
+                    <div className="highlights" ref={(e) => { this.addToRefs(e, 'dataScroll') }}>
                         <div className="containerRight">
                             <span className="highlightTitle">my skill set</span>
-                            <ul className="highlightList highlightScroll" ref={(e) => {this.addToRefs(e, 'highlightScroll')}}>
+                            <ul className="highlightList highlightScroll" ref={(e) => { this.addToRefs(e, 'highlightScroll') }}>
                                 <li className="highlightItem">User experience design</li>
                                 <li className="highlightItem">User Interface design</li>
                                 <li className="highlightItem">Interaction design</li>
@@ -541,31 +515,34 @@ class Main extends React.Component {
                     </div>
                 </section>
                 {/* Second section */}
-                <section className="section introSection" id="section1" ref={(e) => {this.addToRefs(e, 'section')}}>
+                <section className="section introSection" id="section1" ref={(e) => { this.addToRefs(e, 'section') }}>
                     <div className="containerRight fullHeight">
                         <div className="sectionWrapper fullHeight">
                             <div className="sectionLeft">
-                                <p className="introDescription" ref={(e) => {this.addToRefs(e, 'reveal')}}>I am not great at maths but one equation I never get wrong</p>
+                                <p className="introDescription" ref={(e) => { this.addToRefs(e, 'reveal') }}>I am not great at maths but one equation I never get wrong</p>
                                 <div className="equation" />
                             </div>
                             <div className="sectionRight" ref={this.addToSectionRightRefs}>
-                                <span className="questionMark" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={questionMark} alt="questionMark" /></span>
-                                <span className="questionMark1" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={questionMark} alt="questionMark" /></span>
+                                <span className="questionMark" ref={(e) => { this.addToRefs(e, 'leftElement') }}><img src={questionMark} alt="questionMark" /></span>
+                                <span className="questionMark1" ref={(e) => { this.addToRefs(e, 'leftElement') }}><img src={questionMark} alt="questionMark" /></span>
                                 <span className="questionMark2"><img src={questionMark} alt="questionMark" /></span>
-                                <span className="triangle" ref={(e) => {this.addToRefs(e, 'rightElement')}}><img src={triangle} alt="triangle" /></span>
-                                <span className="algeq" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={algeq} alt="algeq" /></span>
-                                <span className="cone" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={cone} alt="cone" /></span>
-                                <span className="algeq2" ref={(e) => {this.addToRefs(e, 'rightElement')}}><img src={algeq2} alt="algeq2" /></span>
+                                <span className="triangle" ref={(e) => { this.addToRefs(e, 'rightElement') }}><img src={triangle} alt="triangle" /></span>
+                                <span className="algeq" ref={(e) => { this.addToRefs(e, 'leftElement') }}><img src={algeq} alt="algeq" /></span>
+                                <span className="cone" ref={(e) => { this.addToRefs(e, 'leftElement') }}><img src={cone} alt="cone" /></span>
+                                <span className="algeq2" ref={(e) => { this.addToRefs(e, 'rightElement') }}><img src={algeq2} alt="algeq2" /></span>
                                 <div className="atulImg">
-                                    <img src={maths} alt="Atul Khola - Not good at maths" />
+                                    <Glitch
+                                        imagePath={maths}
+                                    />
+                                    {/* <img src={maths} alt="Atul Khola - Not good at maths" /> */}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="highlights" ref={(e) => {this.addToRefs(e, 'dataScroll')}}>
+                    <div className="highlights" ref={(e) => { this.addToRefs(e, 'dataScroll') }}>
                         <div className="containerRight">
                             <span className="highlightTitle">my tool box</span>
-                            <ul className="highlightList highlightScroll" ref={(e) => {this.addToRefs(e, 'highlightScroll')}}>
+                            <ul className="highlightList highlightScroll" ref={(e) => { this.addToRefs(e, 'highlightScroll') }}>
                                 <li className="highlightItem">Sketch</li>
                                 <li className="highlightItem">After Effects</li>
                                 <li className="highlightItem">Principle</li>
@@ -583,20 +560,23 @@ class Main extends React.Component {
                     </div>
                 </section>
                 {/* Third section */}
-                <section className="section introSection" id="section2" ref={(e) => {this.addToRefs(e, 'section')}}>
+                <section className="section introSection" id="section2" ref={(e) => { this.addToRefs(e, 'section') }}>
                     <div className="containerRight fullHeight">
                         <div className="sectionWrapper fullHeight">
                             <div className="sectionLeft">
-                                <span className="introTitle" ref={(e) => {this.addToRefs(e, 'reveal')}}>I take my fitness seriously, </span>
-                                <p className="introDescription" ref={(e) => {this.addToRefs(e, 'reveal')}}>to take my productivity and job performance even more seriously.</p>
+                                <span className="introTitle" ref={(e) => { this.addToRefs(e, 'reveal') }}>I take my fitness seriously, </span>
+                                <p className="introDescription" ref={(e) => { this.addToRefs(e, 'reveal') }}>to take my productivity and job performance even more seriously.</p>
                             </div>
                             <div className="sectionRight" ref={this.addToSectionRightRefs}>
-                                <span className="barbell" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={barbell} alt="barbell" /></span>
-                                <span className="rope" ref={(e) => {this.addToRefs(e, 'rightElement')}}><img src={rope} alt="rope" /></span>
-                                <span className="stroke2" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={stroke3} alt="stroke2" /></span>
-                                <span className="stroke3" ref={(e) => {this.addToRefs(e, 'leftElement')}}><img src={stroke2} alt="stroke3" /></span>
+                                <span className="barbell" ref={(e) => { this.addToRefs(e, 'leftElement') }}><img src={barbell} alt="barbell" /></span>
+                                <span className="rope" ref={(e) => { this.addToRefs(e, 'rightElement') }}><img src={rope} alt="rope" /></span>
+                                <span className="stroke2" ref={(e) => { this.addToRefs(e, 'leftElement') }}><img src={stroke3} alt="stroke2" /></span>
+                                <span className="stroke3" ref={(e) => { this.addToRefs(e, 'leftElement') }}><img src={stroke2} alt="stroke3" /></span>
                                 <div className="atulImg">
-                                    <img src={productivity} alt="Atul Khola - Productivity" />
+                                    <Glitch
+                                        imagePath={productivity}
+                                    />
+                                    {/* <img src={productivity} alt="Atul Khola - Productivity" /> */}
                                 </div>
                             </div>
                         </div>
@@ -614,12 +594,12 @@ class Main extends React.Component {
                     </div>
                 </section>
                 {/* Fourth section */}
-                <section className="section introSection" id="section3" ref={(e) => {this.addToRefs(e, 'section')}}>
+                <section className="section introSection" id="section3" ref={(e) => { this.addToRefs(e, 'section') }}>
                     <div className="containerRight fullHeight">
                         <div className="sectionWrapper fullHeight">
                             <div className="sectionLeft">
-                                <span className="introTitle" ref={(e) => {this.addToRefs(e, 'reveal')}}>Apart from lifting weights, I also lift moods with</span>
-                                <p className="introDescription" ref={(e) => {this.addToRefs(e, 'reveal')}}>Surprise PIZZAS for the team. Le Pizza fairy</p>
+                                <span className="introTitle" ref={(e) => { this.addToRefs(e, 'reveal') }}>Apart from lifting weights, I also lift moods with</span>
+                                <p className="introDescription" ref={(e) => { this.addToRefs(e, 'reveal') }}>Surprise PIZZAS for the team. Le Pizza fairy</p>
                             </div>
                             <div className="sectionRight liftMoodsRight" ref={this.addToSectionRightRefs}>
                                 <span className="halo"><img src={halo} alt="halo" /></span>
@@ -628,15 +608,18 @@ class Main extends React.Component {
                                 <span className="pizza3"><img src={pizza} alt="pizza" /></span>
                                 <span className="pizza4"><img src={pizza} alt="pizza" /></span>
                                 <div className="atulImg">
-                                    <img src={liftmoods} alt="Atul Khola - Surprise Pizzas" />
+                                    <Glitch
+                                        imagePath={liftmoods}
+                                    />
+                                    {/* <img src={liftmoods} alt="Atul Khola - Surprise Pizzas" /> */}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
                 {/* Case studies */}
-                <section className="section introSection lightSection" id="section4" ref={(e) => {this.addToRefs(e, 'section')}}>
-                    <div className="containerRight fullHeight">
+                <section className="section introSection lightSection" id="section4" ref={(e) => { this.addToRefs(e, 'section') }}>
+                    <div className="containerRight">
                         <div className="titleWrapper">
                             <h2 className="sectionTitle darkText">Case Studies</h2>
                             <div className="ctaWrapper">
@@ -649,25 +632,25 @@ class Main extends React.Component {
                                 <span className="ctaArrow darkText"><Icon icon={"arrow-right2"} size={20} /></span>
                             </div>
                         </div>
-                        <div className="dataWrapper dataHighlightScroll">
-                            {this.state.caseStudies.map((i, k) => {
-                                return (
-                                    <CaseStudy
-                                        key={`cs-${k}`}
-                                        title={i.title}
-                                        description={i.description}
-                                        linkOut={i.linkOut}
-                                        bgImg={i.bgImg}
-                                        mode="dark"
-                                    />
-                                )
-                            })}
-                        </div>
+                    </div>
+                    <div className="dataWrapper dataHighlightScroll">
+                        {this.state.caseStudies.map((i, k) => {
+                            return (
+                                <CaseStudy
+                                    key={`cs-${k}`}
+                                    title={i.title}
+                                    description={i.description}
+                                    linkOut={i.linkOut}
+                                    bgImg={i.bgImg}
+                                    mode="dark"
+                                />
+                            )
+                        })}
                     </div>
                 </section>
                 {/* Articles */}
-                <section className="section introSection" id="section4" ref={(e) => {this.addToRefs(e, 'section')}}>
-                    <div className="containerRight fullHeight">
+                <section className="section introSection" id="section4" ref={(e) => { this.addToRefs(e, 'section') }}>
+                    <div className="containerRight">
                         <div className="titleWrapper">
                             <h2 className="sectionTitle">Articles</h2>
                             <div className="ctaWrapper">
@@ -680,124 +663,133 @@ class Main extends React.Component {
                                 <span className="ctaArrow"><Icon icon={"arrow-right2"} size={20} /></span>
                             </div>
                         </div>
-                        <div className="dataWrapper dataHighlightScroll">
-                            {this.state.articles.map((i, k) => {
-                                return (
-                                    <Articles
-                                        key={`articles-${k}`}
-                                        title={i.title}
-                                        description={i.description}
-                                        linkOut={i.linkOut}
-                                        bgImg={i.bgImg}
-                                        mode="dark"
-                                    />
-                                )
-                            })}
-                        </div>
+                    </div>
+                    <div className="dataWrapper dataHighlightScroll">
+                        {this.state.articles.map((i, k) => {
+                            return (
+                                <Articles
+                                    key={`articles-${k}`}
+                                    title={i.title}
+                                    description={i.description}
+                                    linkOut={i.linkOut}
+                                    bgImg={i.bgImg}
+                                    mode="dark"
+                                />
+                            )
+                        })}
                     </div>
                 </section>
                 {/* Interactions */}
-                <section className="section introSection lightSection" id="section5" ref={(e) => {this.addToRefs(e, 'section')}}>
-                    <div className="containerRight fullHeight">
+                <section className="section introSection lightSection" id="section5" ref={(e) => { this.addToRefs(e, 'section') }}>
+                    <div className="containerRight">
                         <div className="titleWrapper">
                             <h2 className="sectionTitle darkText">Interactions</h2>
                             <div className="ctaWrapper">
                                 <Cta
                                     ctaText={"SEE ON DRIBBBLE"}
-                                    linkOut={"https://www.instagram.com/pixelandpump"}
+                                    linkOut={"https://dribbble.com/atulkhola"}
                                     mode="dark"
                                     className="ctaText"
                                 />
                                 <span className="ctaArrow darkText"><Icon icon={"arrow-right2"} size={20} /></span>
                             </div>
                         </div>
-                        <div className="dataWrapper dblScroll">
-                            <div className="topIntList">
-                                {
-                                    dribbbleTopList.map((i, k) => {
-                                        return (
-                                            <Interactions
-                                                key={i.title + k}
-                                                intImg={i.thumbnail}
-                                                intImgH={i.animated}
-                                                title={i.title}
-                                                linkOut={i.url}
-                                            />
-                                        )
-                                    })
-                                }
-                            </div>
-                            <div className="bottomIntList">
-                                {
-                                    dribbbleBottomList.map((i, k) => {
-                                        return (
-                                            <Interactions
-                                                key={i.title + k}
-                                                intImg={i.thumbnail}
-                                                intImgH={i.animated}
-                                                title={i.title}
-                                                linkOut={i.url}
-                                            />
-                                        )
-                                    })
-                                }
-                            </div>
+                    </div>
+                    <div className="dataWrapper dblScroll">
+                        <div className="topIntList">
+                            {
+                                dribbbleTopList.map((i, k) => {
+                                    return (
+                                        <Interactions
+                                            key={i.title + k}
+                                            intImg={i.thumbnail}
+                                            intImgH={i.animated}
+                                            title={i.title}
+                                            linkOut={i.url}
+                                        />
+                                    )
+                                })
+                            }
+                        </div>
+                        <div className="bottomIntList">
+                            {
+                                dribbbleBottomList.map((i, k) => {
+                                    return (
+                                        <Interactions
+                                            key={i.title + k}
+                                            intImg={i.thumbnail}
+                                            intImgH={i.animated}
+                                            title={i.title}
+                                            linkOut={i.url}
+                                        />
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                 </section>
                 {/* Testimonials */}
-                <section className="section introSection lightSection" id="section5" ref={(e) => {this.addToRefs(e, 'section')}}>
-                    <div className="containerRight fullHeight">
+                <section className="section introSection lightSection" id="section5" ref={(e) => { this.addToRefs(e, 'section') }}>
+                    <div className="containerRight">
                         <div className="titleWrapper blockWrapper">
                             <span className="introTitle darkText">The best part about the job</span>
                             <h2 className="sectionTitle darkText">people ❤️</h2>
                         </div>
-                        <div className="dataWrapper dataHighlightScroll">
-                            {this.state.testimonials.map((i, k) => {
-                                return (
-                                    <Testimonial
-                                        key={`testimonial-` + k}
-                                        title={i.title}
-                                        description={i.description}
-                                        authorName={i.authorName}
-                                        authorPosition={i.authorPosition}
-                                        authorCompany={i.authorCompany}
-                                        linkOut={i.link}
-                                        authorImg={i.authorImg}
-                                        mode="dark"
-                                    />
-                                )
-                            })}
-                        </div>
+                    </div>
+                    <div className="dataWrapper dataHighlightScroll">
+                        {this.state.testimonials.map((i, k) => {
+                            return (
+                                <Testimonial
+                                    key={`testimonial-` + k}
+                                    title={i.title}
+                                    description={i.description}
+                                    authorName={i.authorName}
+                                    authorPosition={i.authorPosition}
+                                    authorCompany={i.authorCompany}
+                                    linkOut={i.link}
+                                    authorImg={i.authorImg}
+                                    mode="dark"
+                                />
+                            )
+                        })}
                     </div>
                 </section>
                 {/* Instagram */}
-                <section className="section introSection" id="section5" ref={(e) => {this.addToRefs(e, 'section')}}>
-                    <div className="containerRight fullHeight">
+                <section className="section introSection" id="section5" ref={(e) => { this.addToRefs(e, 'section') }}>
+                    <div className="containerRight dFlex">
                         <div className="titleWrapper blockWrapper">
                             <span className="introTitle">&amp; there's so much more to life than</span>
                             <h2 className="sectionTitle">just work ✨</h2>
                         </div>
-                        <div className="dataWrapper dataHighlightScroll">
-                            <div className="topIntList">
-                                {
-                                    this.state.insta.map((i, k) => {
-                                        return (
-                                            <Insta
-                                                key={i.title + k}
-                                                instaImg={i.thumbnail}
-                                                title={i.title}
-                                                linkOut={i.url}
-                                            />
-                                        )
-                                    })
-                                }
-                            </div>                        
+                        <div className="ctaWrapper">
+                            <Cta
+                                ctaText={"SEE THEM ON INSTAGRAM"}
+                                linkOut={"https://www.instagram.com/pixelandpump"}
+                                mode="light"
+                                className="ctaText"
+                            />
+                            <span className="ctaArrow"><Icon icon={"arrow-right2"} size={20} /></span>
+                        </div>
+                    </div>
+                    <div className="dataWrapper dataHighlightScroll">
+                        <div className="topIntList">
+                            {
+                                this.state.insta.map((i, k) => {
+                                    return (
+                                        <Insta
+                                            key={i.title + k}
+                                            instaImg={i.thumbnail}
+                                            title={i.title}
+                                            linkOut={i.url}
+                                        />
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                 </section>
                 {/* Contact */}
-                <section className="section introSection" id="section6" ref={(e) => {this.addToRefs(e, 'section')}}>
+                <section className="section introSection" id="section6" ref={(e) => { this.addToRefs(e, 'section') }}>
                     <div className="containerRight fullHeight">
                         <div className="sectionWrapper fullHeight">
                             <div className="sectionLeft fullHeight">
@@ -830,7 +822,10 @@ class Main extends React.Component {
                                 <span className="hearts"><img src={hearts} alt="hearts" /></span>
                                 <span className="puzzles"><img src={puzzles} alt="puzzles" /></span>
                                 <div className="atulImg">
-                                    <img src={getintouch} alt="Atul Khola - Get in touch" />
+                                    <Glitch
+                                        imagePath={getintouch}
+                                    />
+                                    {/* <img src={getintouch} alt="Atul Khola - Get in touch" /> */}
                                 </div>
                             </div>
                         </div>
