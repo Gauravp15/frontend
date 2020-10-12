@@ -10,7 +10,7 @@ class Header extends React.Component {
 
     }
 
-    scrollToTargets = (e,target) => {
+    scrollToTargets = (e, target) => {
         e.preventDefault();
         gsap.to(window, {
             duration: 1.5,
@@ -30,11 +30,11 @@ class Header extends React.Component {
                             <img src={logo} alt="Atul Khola" />
                         </div>
                         <ul className="navList">
-                            <li className="navItem"><a onClick={(e) => this.scrollToTargets(e,'#section0')} href="#">About</a></li>
-                            <li className="navItem"><a onClick={(e) => this.scrollToTargets(e,'#section3')} href="#">Work</a></li>
-                            <li className="navItem"><a onClick={(e) => this.scrollToTargets(e,'#section4')} href="#">People</a></li>
-                            <li className="navItem"><a onClick={(e) => this.scrollToTargets(e,'#section5')} href="#">Life</a></li>
-                            <li className="navItem"><a onClick={(e) => this.scrollToTargets(e,'#section6')} href="#">Contact</a></li>
+                            <li className="navItem"><a /* onClick={(e) => this.scrollToTargets(e, '#section0') }*/ href="#section0">About</a></li>
+                            <li className="navItem"><a /* onClick={(e) => this.scrollToTargets(e, '#section4')} */ href="#section4">Work</a></li>
+                            <li className="navItem"><a /* onClick={(e) => this.scrollToTargets(e, '#section7')} */ href="#section7">People</a></li>
+                            <li className="navItem"><a /* onClick={(e) => this.scrollToTargets(e, '#section8')}  */ href="#section8">Life</a></li>
+                            <li className="navItem"><a /* onClick={(e) => this.scrollToTargets(e, '#section9')}  */ href="#section9">Contact</a></li>
                         </ul>
                         <div className="downloadResume">
                             <a href="#" data-text="Download Resume">Download Resume</a>

@@ -1,5 +1,5 @@
 import React from 'react';
-import * as PIXI from 'pixi.js';
+import * as PIXI from 'pixi.js-legacy';
 import { RGBSplitFilter } from '@pixi/filter-rgb-split';
 import { GlitchFilter } from '@pixi/filter-glitch';
 import { gsap } from 'gsap';
@@ -20,7 +20,7 @@ class Glitch extends React.Component {
 
         let glitchEff = new PIXI.Application({
             view: canvas,
-            width: 600,
+            width: 630,
             height: 700,
             transparent: true
         });
@@ -70,38 +70,38 @@ class Glitch extends React.Component {
             duration: 0.2,
             x: this.randomIntFromInterval(-15, 15),
             y: 0,
-            /* onComplete() {
+            onComplete() {
 
                 THAT.image.filters[1].slices = 20
                 THAT.image.filters[1].direction = THAT.randomIntFromInterval(-75, 75)
 
                 // console.log(THAT.img.filters[1].slices)
 
-            } */
+            }
         }, '-=0.2');
 
         tl.to(this.image.filters[0].blue, {
             duration: 0.1,
             x: this.randomIntFromInterval(-15, 15),
             y: this.randomIntFromInterval(-5, 5),
-            /* onComplete() {
+            onComplete() {
 
                 THAT.image.filters[1].slices = 12
                 THAT.image.filters[1].direction = THAT.randomIntFromInterval(-75, 75)
 
-            } */
+            }
         });
 
         tl.to(this.image.filters[0].blue, {
             duration: 0.01,
             x: 0,
             y: 0,
-            /* onComplete() {
+            onComplete() {
 
                 THAT.image.filters[1].slices = 0
                 THAT.image.filters[1].direction = 0
 
-            } */
+            }
         });
 
         tl.to(this.image.filters[0].green, {
@@ -122,7 +122,7 @@ class Glitch extends React.Component {
             y: 0
         });
 
-        //tl.timeScale(1.2);
+        tl.timeScale(1.2);
     }
 
     render() {
