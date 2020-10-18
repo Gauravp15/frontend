@@ -44,10 +44,22 @@ body {
   background: var(--mainBgColor);
   font-size: 16px;
   scrollbar-width: none;
+  cursor: none;
 }
-
+.csr{
+  position: fixed;
+  top: 0px;
+  left:0px;
+  mix-blend-mode: difference;
+  z-index: 1000;
+  pointer-events: none;
+}
+.csr circle{
+  fill: var(--textColor);
+}
 a {
   text-decoration: none;
+  cursor: none;
 }
 ul,
 li {
@@ -129,7 +141,7 @@ ul {
   color: var(--mainBgColor);
 }
 .titleWrapper {
-  padding-top: 150px;
+  padding-top: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -194,12 +206,11 @@ ul {
   font-size: 1.1em;
   font-weight: 600;
   opacity: 0.4;
-  cursor: pointer;
   transition: var(--transition);
   -webkit-transition: var(--transition);
   -moz-transition: var(--transition);
 }
-.navItem a:hover, .navItem a.active {
+.navItem a:hover, .navItem.active a {
   opacity: 1;
 }
 .downloadResume {
@@ -230,6 +241,20 @@ ul {
   -moz-animation: bgGradient 10s ease infinite;
   animation: bgGradient 10s ease infinite;
 }
+.resumeText{
+  display: block;
+  position: relative;
+}
+.resumeText:after{
+  content: 'Download Resume';
+  position: absolute;
+  right: -100%;
+}
+.downloadResume a:hover .resumeText{
+  animation: marquee 3s linear infinite;
+  -webkit-animation: marquee 3s linear infinite;
+  -moz-animation: marquee 3s linear infinite;
+}
 .downloadResume a:after {
   content: attr(data-text);
   position: absolute;
@@ -247,6 +272,7 @@ ul {
 }
 .introDescription {
   font-size: 2.8em;
+  line-height: 1.4;
   font-weight: 800;
   margin: 10px 0px;
 }
@@ -488,8 +514,13 @@ ul {
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
 }
-.csWrapper:last-child {
-  margin-right: 0px;
+/* .csWrapper:last-child {
+  margin-right: 20px;
+} */
+.mr20{
+  padding-right:1px;
+  width: 1px;
+  height: 1px;
 }
 .descriptionBlock {
   width: calc(100% - 40px);
@@ -610,6 +641,7 @@ ul {
   overflow-y: hidden;
   overflow-x: auto;
   padding-left: 80px;
+  padding-right: 20px;
   scrollbar-width: none;
 }
 .testiWrapper {
@@ -649,8 +681,6 @@ ul {
   line-height: 1.3;
 }
 .authorDetailsWrapper {
-  display: flex;
-  align-items: center;
   height: 100px;
   position: absolute;
   bottom: 0px;
@@ -660,13 +690,17 @@ ul {
   box-sizing: initial;
 }
 .authorDetails {
-  display: block;
+  display: inline-block;
+  width: calc(100% - 120px);
+  vertical-align: middle;
 }
 .authorImg {
   width: 100px;
   height: 100px;
   background: var(--mainBgColor);
   margin-right: 20px;
+  display: inline-block;
+  vertical-align: middle;
 }
 .authorImg img {
   width: 100%;
@@ -705,12 +739,10 @@ ul {
   height: 190px;
   display: flex;
   align-items: center;
-  transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
   position: relative;
   justify-content: center;
   margin-right: 40px;
+  border-radius: 50%;
 }
 .btnMain {
   align-self: flex-end;
@@ -720,7 +752,7 @@ ul {
   height: 100%;
   width: 100%;
   border-radius: 50%;
-  padding: 0px 0px 3px 10px;
+  padding: 10px;
   font-weight: 800;
   position: relative;
   color: var(--textColor);
@@ -731,7 +763,7 @@ ul {
 .btnMain.darkText {
   color: var(--mainBgColor);
 }
-.btnMain:hover {
+.ctaWrapper:hover {
   color: var(--textColor);
   background: linear-gradient(270deg, #6133cc, #e758a5, #ffb57e);
   background-size: 200% 200%;
@@ -741,11 +773,11 @@ ul {
 }
 .ctaArrow {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
-  transform: rotate(-90deg) translate(-50%, -50%);
-  -webkit-transform: rotate(-90deg) translate(-50%, -50%);
-  -moz-transform: rotate(-90deg) translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -836,14 +868,14 @@ ul {
 /* ==========Keyframes============ */
 @keyframes marquee {
   0% {
-    transform: translateX(0);
-    -webkit-transform: translateX(0);
-    -moz-transform: translateX(0);
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
   }
   100% {
-    -webkit-transform: translateX(-100%);
-    -moz-transform: translateX(-100%);
-    transform: translateX(-100%);
+    -webkit-transform: translateX(-200%);
+    -moz-transform: translateX(-200%);
+    transform: translateX(-200%);
   }
 }
 @-webkit-keyframes marquee {

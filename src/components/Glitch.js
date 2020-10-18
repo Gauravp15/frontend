@@ -25,6 +25,8 @@ class Glitch extends React.Component {
             transparent: true
         });
 
+        PIXI.utils.skipHello();
+
         glitchEff.stage.addChild(this.image);
         this.image.filters = [new RGBSplitFilter(), new GlitchFilter()];
         // reset rgb split

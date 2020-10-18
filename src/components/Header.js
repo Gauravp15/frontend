@@ -5,6 +5,10 @@ import logo from '../static/atulkhola.svg';
 
 class Header extends React.Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     componentDidMount() {
         gsap.registerPlugin(ScrollToPlugin);
 
@@ -30,14 +34,14 @@ class Header extends React.Component {
                             <img src={logo} alt="Atul Khola" />
                         </div>
                         <ul className="navList">
-                            <li className="navItem"><a /* onClick={(e) => this.scrollToTargets(e, '#section0') }*/ href="#section0">About</a></li>
-                            <li className="navItem"><a /* onClick={(e) => this.scrollToTargets(e, '#section4')} */ href="#section4">Work</a></li>
-                            <li className="navItem"><a /* onClick={(e) => this.scrollToTargets(e, '#section7')} */ href="#section7">People</a></li>
-                            <li className="navItem"><a /* onClick={(e) => this.scrollToTargets(e, '#section8')}  */ href="#section8">Life</a></li>
-                            <li className="navItem"><a /* onClick={(e) => this.scrollToTargets(e, '#section9')}  */ href="#section9">Contact</a></li>
+                            <li className="navItem" /* data-menuanchor="about" */><a onClick={(e) => this.props.fullpageApi.moveTo('about')} href="#about">About</a></li>
+                            <li className="navItem" /* data-menuanchor="work" */><a onClick={(e) => this.props.fullpageApi.moveTo('work')} href="#work">Work</a></li>
+                            <li className="navItem" /* data-menuanchor="people" */><a onClick={(e) => this.props.fullpageApi.moveTo('people')} href="#people">People</a></li>
+                            <li className="navItem" /* data-menuanchor="life" */><a onClick={(e) => this.props.fullpageApi.moveTo('life')} href="#life">Life</a></li>
+                            <li className="navItem" /* data-menuanchor="contact" */><a onClick={(e) => this.props.fullpageApi.moveTo('contact')} href="#contact">Contact</a></li>
                         </ul>
                         <div className="downloadResume">
-                            <a href="#" data-text="Download Resume">Download Resume</a>
+                            <a href="https://pixelandpump.com/wp-content/uploads/2020/10/Atul-Khola1.pdf" data-text="Download Resume" target="_blank" rel="noopener noreferrer"><span className="resumeText">Download Resume</span></a>
                         </div>
                     </div>
                 </div>

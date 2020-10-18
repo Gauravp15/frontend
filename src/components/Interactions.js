@@ -29,7 +29,7 @@ class Interactions extends React.Component {
 
         return (
             <a className="intWrapper" href={linkOut} target="_blank" rel="noopener noreferrer" onMouseEnter={() => { this.setState({ active: true }) }} onMouseLeave={() => { this.setState({ active: false }) }} style={{backgroundImage: `url(${intImg})`, backgroundSize: 'cover', backgroundPosition: 'center center'}}>
-                <video src={this.state.videoSrc} className={`dbVid ${this.state.active ? 'active' : ''}`} type="video/mp4" loop muted ref={this.video} autoPlay />
+                <video data-keepplaying src={this.state.videoSrc} className={`dbVid ${this.state.active ? 'active' : ''}`} type="video/mp4" playsInline loop muted ref={this.video} autoPlay />
                 {/* <img src={intImg} alt={title} /> */}
             </a>
         )
