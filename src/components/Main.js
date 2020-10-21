@@ -41,8 +41,8 @@ import checkbox from '../static/checkbox.svg';
 import hand from '../static/hand.svg';
 import hearts from '../static/hearts.svg';
 import puzzles from '../static/puzzles.svg';
-import hi from '../static/hi.svg';
-import pointup from '../static/pointup.svg';
+import hi from '../static/hi.png';
+import pointup from '../static/pointup.png';
 /* Companies svg imports */
 import curefit from '../static/curefit.svg';
 import curefitn from '../static/curefitn.svg';
@@ -58,14 +58,14 @@ import medium from '../static/medium.svg';
 import dribbble from '../static/dribbble.svg';
 import linkedin from '../static/linkedin.svg';
 import instagram from '../static/instagram.svg';
-import scribble from '../static/scribble.svg';
+import scribble from '../static/strike.svg';
 import twitter from '../static/twitter.svg';
 /* Image imports */
 /* import interactionImg from '../static/interaction.jpg'; */
 import intro from '../static/atulk/intro.png';
 import getintouch from '../static/atulk/getintouch.png';
 import maths from '../static/atulk/maths.png';
-import productivity from '../static/atulk/productivity1.png';
+import productivity from '../static/atulk/productivity3.png';
 import liftmoods from '../static/atulk/liftmoods.png';
 import equation1 from '../static/equation.png';
 import instacta from '../static/instacta.png';
@@ -722,6 +722,7 @@ class Main extends React.Component {
                                         <div className="atulImg">
                                             <Glitch
                                                 imagePath={productivity}
+                                                className={"gym"}
                                             />
                                             {/* <img src={productivity} alt="Atul Khola - Productivity" /> */}
                                         </div>
@@ -938,7 +939,7 @@ class Main extends React.Component {
                                 </div>
                             </div>
                             <div className="dataWrapper dataHighlightScroll">
-                                <div className="topIntList">
+                                <div className="topIntList instaList">
                                     {
                                         this.state.insta.map((i, k) => {
                                             return (
@@ -961,7 +962,7 @@ class Main extends React.Component {
                             <div className="containerRight fullHeight">
                                 <div className="sectionWrapper fullHeight">
                                     <div className="sectionLeft fullHeight">
-                                        <div className="titleWrapper blockWrapper">
+                                        <div className="titleWrapper blockWrapper helloWrapper">
                                             <span className="introTitle">Let's connect!</span>
                                             <h2 className="sectionTitle bottomSectionTitle">Your company, a runway of brainstormed ideas, a hell of a <span className="textScribble">coffee<span className="scribble"><img src={scribble} alt="scribble" /></span></span> beer and gateway to spectacular. </h2>
                                         </div>
@@ -972,7 +973,7 @@ class Main extends React.Component {
                                                 className="ctaText"
                                                 imgSrc={hellocta}
                                             />
-                                            <span className="ctaArrow darkText" ref={(e) => { this.addToRefs(e, 'ctaPointer') }}><img src={this.state.helloCta ? hi : pointup} alt={this.state.helloCta ? 'Click' : 'Click here'} />{/* <Icon icon={"arrow-right2"} size={20} /> */}</span>
+                                            <span className="ctaArrow darkText" ref={(e) => { this.addToRefs(e, 'ctaPointer') }}><img src={this.state.helloCta ? hi : pointup} alt={this.state.helloCta ? 'Click' : 'Click here'} /></span>
                                         </div>
                                         <div className="contactBottom">
                                             <ul className="socialList">
@@ -987,10 +988,10 @@ class Main extends React.Component {
                                         </div>
                                     </div>
                                     <div className="sectionRight" ref={(e) => { this.addToRefs(e, 'sectionRight') }}>
-                                        <span className="checkbox" ref={(e) => { this.addToRefs(e, 'rightElement') }}><img src={checkbox} alt="checkbox" /></span>
+                                        {/* <span className="checkbox" ref={(e) => { this.addToRefs(e, 'rightElement') }}><img src={checkbox} alt="checkbox" /></span> */}
                                         <span className="hand" ref={(e) => { this.addToRefs(e, 'leftElement') }}><img src={hand} alt="hand" /></span>
                                         <span className="hearts" ref={(e) => { this.addToRefs(e, 'rightElement') }}><img src={hearts} alt="hearts" /></span>
-                                        <span className="puzzles" ref={(e) => { this.addToRefs(e, 'leftElement') }}><img src={puzzles} alt="puzzles" /></span>
+                                        {/* <span className="puzzles" ref={(e) => { this.addToRefs(e, 'leftElement') }}><img src={puzzles} alt="puzzles" /></span> */}
                                         <div className="atulImg">
                                             <Glitch
                                                 imagePath={getintouch}

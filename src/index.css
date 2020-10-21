@@ -14,7 +14,7 @@
   /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
   border-radius: 10px;
   background-color: #ffffff;
-  display: none;
+  /* display: none; */
 }
 
 *::-webkit-scrollbar {
@@ -22,7 +22,7 @@
   height: 5px;
   background-color: #ffffff;
   scroll-behavior: smooth;
-  display: none;
+  /* display: none; */
 }
 
 *::-webkit-scrollbar-thumb {
@@ -428,7 +428,7 @@ ul {
   width: 20px;
   height: 70px;
   bottom: 20%;
-  left: 10%;
+  left: 0%;
 }
 .stroke3 {
   position: absolute;
@@ -733,6 +733,9 @@ ul {
   align-items: center;
   justify-content: space-between;
 }
+.instaList{
+  margin-top: 70px;
+}
 /* ==========CTA============ */
 .ctaWrapper {
   width: 190px;
@@ -775,6 +778,7 @@ ul {
   position: absolute;
   top: 50%;
   left: 50%;
+  max-width: 50px;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -833,6 +837,7 @@ ul {
 .textScribble span {
   position: absolute;
   left: 0px;
+  top: 10px;
 }
 .checkbox {
   position: absolute;
@@ -846,9 +851,8 @@ ul {
   position: absolute;
   width: 120px;
   height: 120px;
-  bottom: 20%;
-  left: -20%;
-  z-index: 1;
+  top: 45%;
+  left: 15%;
 }
 .puzzles {
   position: absolute;
@@ -861,9 +865,12 @@ ul {
   position: absolute;
   width: 122px;
   height: 90px;
-  top: 38%;
+  bottom: 25%;
   right: 5%;
   z-index: 1;
+}
+.helloWrapper{
+  padding-top: 160px;
 }
 /* ==========Keyframes============ */
 @keyframes marquee {
@@ -962,12 +969,181 @@ ul {
   }
 }
 /* ==========Media Queries============ */
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-height: 1000px) {
+  .selection {
+    top: 27%;
+  }
+  .questionMark,
+  .questionMark1 {
+    top: 15%;
+  }
+  .halo {
+    top: 24%;
+  }
+}
+@media only screen and (max-height: 800px) {
+  .sectionRight {
+    width: 450px;
+  }
+  .glitchImage{
+    width: 550px;
+  }
+  .introDescription{
+    line-height: 1.1;
+  }
+  .selection {
+    width: 230px;
+    height: 230px;
+    top: 22%;
+    left: 40%;
+  }
+  .bulb {
+    width: 70px;
+  }
+  .chat {
+    width: 130px;
+    height: 140px;
+  }
+  .questionMark1,
+  .questionMark {
+    top: 8%;
+  }
+  .rope {
+    width: 195px;
+    height: 290px;
+  }
+  .halo {
+    top: 18%;
+  }
+  .pizza1 {
+    height: 130px;
+    width: 120px;
+    top: 30%;
+  }
+  .pizza2 {
+    height: 130px;
+    width: 120px;
+    top: 48%;
+  }
+  .pizza3 {
+    height: 130px;
+    width: 120px;
+  }
+  .pizza4 {
+    height: 130px;
+    width: 120px;
+  }
+  .puzzles {
+    top: 29%;
+  }
+  .btnMain {
+    font-size: 0.8em;
+  }
+  /* .ctaWrapper {
+    width: 150px;
+    height: 150px;
+  } */
+  .sectionTitle {
+    font-size: 2.2em;
+  }
+  .titleWrapper {
+    padding-top: 70px;
+    margin-bottom: 30px;
+  }
+  .articleImg {
+    min-height: 180px;
+  }
+  .csWrapper, .articlesWrapper{
+    min-height: 410px;
+  }
+  .intWrapper{
+    width: 260px;
+    height: 195px;
+  }
+  .authorImg{
+    width: 80px;
+    height: 80px;
+  }
+  .testiDescriptionWrapper{
+    max-height: 210px;
+  }
+  .authorDetailsWrapper{
+    height: auto;
+  }
+  .authorName{
+    font-size: 1.2em;
+  }
+  .helloWrapper{
+    padding-top: 120px;
+  }
+  .hand{
+    top: 36%;
+  }
+  .contactBottom{
+    bottom: 50px;
+  }
+}
+@media only screen and (max-width: 1600px) and (max-height: 1000px){
+  .glitchImage{
+    width: 520px;
+  }
+  .triangle{
+    right: 0%;
+  }
+  .algeq2{
+    right: 9%;
+  }
+  .colordrop{
+    right: -5%;
+  }
+  .halo{
+    right: -6%; 
+  }
+  .pizza1{
+    right: -20%;
+  }
+  .pizza2{
+    right: -15%;
+  }
+  .hearts{
+    right: -10%;
+  }
+}
+@media only screen and (max-width: 1600px) and (max-height: 800px){
+  .glitchImage{
+    width: 520px;
+  }
+  .triangle{
+    right: 0%;
+  }
+  .algeq2{
+    right: 9%;
+  }
+  .colordrop{
+    right: -5%;
+  }
+  .halo{
+    right: -6%; 
+  }
+  .pizza1{
+    right: -20%;
+  }
+  .pizza2{
+    right: -15%;
+  }
+  .hearts{
+    right: -10%;
+  }
+}
+@media only screen and (max-width: 1500px){
   body {
     font-size: 15px;
   }
   .sectionRight {
     width: 500px;
+  }  
+  .glitchImage{
+    width: 580px;
   }
   .colordrop {
     top: 55%;
@@ -1002,6 +1178,7 @@ ul {
   }
   .rope {
     top: 35%;
+    right: 0%;
   }
   .barbell {
     top: 25%;
@@ -1053,10 +1230,10 @@ ul {
     width: 450px;
   }
   .selection {
-    width: 230px;
-    height: 230px;
+    width: 250px;
+    height: 250px;
     top: 30%;
-    left: 40%;
+    left: 48%;
   }
   .bulb {
     width: 70px;
@@ -1065,6 +1242,17 @@ ul {
     width: 130px;
     height: 140px;
   }
+  .glitchImage{
+    width: 580px;
+  }
+  .rope{
+    top: 30%;
+  }
+  .pizza1{
+    width: 160px;
+    height: 120px;
+    right: -20%;
+  }
 }
 @media only screen and (max-width: 1300px) {
   body {
@@ -1072,6 +1260,9 @@ ul {
   }
   .containerRight {
     width: calc(100% - 40px);
+  }
+  .dataHighlightScroll{
+    padding-left: 40px;
   }
   .sectionLeft {
     max-width: 45%;
@@ -1085,107 +1276,5 @@ ul {
   .halo {
     top: 18%;
     right: 5%;
-  }
-}
-@media only screen and (max-height: 900px) {
-  .selection {
-    top: 19%;
-  }
-  .questionMark,
-  .questionMark1 {
-    top: 15%;
-  }
-  .algeq2 {
-    right: 5%;
-  }
-  .triangle {
-    right: -10%;
-  }
-  .rope {
-    right: -15%;
-    width: 190px;
-  }
-  .halo {
-    top: 24%;
-    right: 6%;
-  }
-}
-@media only screen and (max-height: 800px) {
-  .sectionRight {
-    width: 450px;
-  }
-  .selection {
-    width: 230px;
-    height: 230px;
-    top: 15%;
-    left: 40%;
-  }
-  .bulb {
-    width: 70px;
-  }
-  .colordrop {
-    right: 0px;
-  }
-  .chat {
-    width: 130px;
-    height: 140px;
-  }
-  .algeq2 {
-    right: 5%;
-  }
-  .triangle {
-    right: -10%;
-  }
-  .questionMark1,
-  .questionMark {
-    top: 8%;
-  }
-  .rope {
-    width: 195px;
-    height: 290px;
-    right: -15%;
-  }
-  .halo {
-    right: 4%;
-  }
-  .pizza1 {
-    height: 130px;
-    width: 120px;
-    right: -20%;
-  }
-  .pizza2 {
-    height: 130px;
-    width: 120px;
-  }
-  .pizza3 {
-    height: 130px;
-    width: 120px;
-  }
-  .pizza4 {
-    height: 130px;
-    width: 120px;
-  }
-  .hearts {
-    right: -10%;
-  }
-  .puzzles {
-    top: 29%;
-  }
-  .btnMain {
-    font-size: 0.8em;
-  }
-  /* .ctaWrapper {
-    width: 150px;
-    height: 150px;
-  } */
-  .sectionTitle {
-    font-size: 2.2em;
-  }
-  .titleWrapper {
-    padding-top: 120px;
-    margin-bottom: 30px;
-  }
-  .articleImg {
-    min-height: 200px;
   }
 }

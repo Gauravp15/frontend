@@ -130,7 +130,7 @@ class Glitch extends React.Component {
     render() {
 
         return (
-            <canvas className="glitchImage" ref={this.glitchImage} />
+            <canvas className={this.props.className ? `glitchImage ${this.props.className}` : 'glitchImage'} ref={this.glitchImage} />
         )
     }
 }
