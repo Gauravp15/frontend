@@ -6,6 +6,7 @@ import { get, slice } from 'lodash-es';
 import customFetch from '../utils/customFetch';
 import ReactFullpage from '@fullpage/react-fullpage';
 import Ticker from 'react-ticker';
+import ScrollContainer from 'react-indiana-drag-scroll';
 /* Component imports */
 import '../index.css';
 import Header from './Header';
@@ -62,11 +63,11 @@ import scribble from '../static/strike.svg';
 import twitter from '../static/twitter.svg';
 /* Image imports */
 /* import interactionImg from '../static/interaction.jpg'; */
-import intro from '../static/atulk/intro.png';
-import getintouch from '../static/atulk/getintouch.png';
-import maths from '../static/atulk/maths.png';
-import productivity from '../static/atulk/productivity3.png';
-import liftmoods from '../static/atulk/liftmoods.png';
+import intro from '../static/atulk/intro1.png';
+import getintouch from '../static/atulk/getintouch1.png';
+import maths from '../static/atulk/maths2.png';
+import productivity from '../static/atulk/productivity2.png';
+import liftmoods from '../static/atulk/liftmoods1.png';
 import equation1 from '../static/equation.png';
 import instacta from '../static/instacta.png';
 import behancecta from '../static/behancecta.png';
@@ -786,7 +787,7 @@ class Main extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="dataWrapper dataHighlightScroll">
+                            <ScrollContainer className="dataWrapper dataHighlightScroll">
                                 {this.state.caseStudies.map((i, k) => {
                                     return (
                                         <CaseStudy
@@ -800,7 +801,7 @@ class Main extends React.Component {
                                     )
                                 })}
                                 <div className="mr20"></div>
-                            </div>
+                            </ScrollContainer>
                         </section>
 
                         {/* Articles */}
@@ -821,7 +822,7 @@ class Main extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="dataWrapper dataHighlightScroll">
+                            <ScrollContainer className="dataWrapper dataHighlightScroll">
                                 {this.state.articles.map((i, k) => {
                                     return (
                                         <Articles
@@ -835,7 +836,7 @@ class Main extends React.Component {
                                     )
                                 })}
                                 <div className="mr20"></div>
-                            </div>
+                            </ScrollContainer>
                         </section>
 
                         {/* Interactions */}
@@ -899,7 +900,7 @@ class Main extends React.Component {
                                     <h2 className="sectionTitle">people ❤️</h2>
                                 </div>
                             </div>
-                            <div className="dataWrapper dataHighlightScroll">
+                            <ScrollContainer className="dataWrapper dataHighlightScroll">
                                 {this.state.testimonials.map((i, k) => {
                                     return (
                                         <Testimonial
@@ -916,7 +917,7 @@ class Main extends React.Component {
                                     )
                                 })}
                                 <div className="mr20"></div>
-                            </div>
+                            </ScrollContainer>
                         </section>
 
                         {/* Instagram */}
@@ -938,7 +939,7 @@ class Main extends React.Component {
                                     <span className="ctaArrow darkText" ref={(e) => { this.addToRefs(e, 'ctaPointer') }}><img src={this.state.instaCta ? hi : pointup} alt={this.state.instaCta ? 'Click' : 'Click here'} />{/* <Icon icon={"arrow-right2"} size={20} /> */}</span>
                                 </div>
                             </div>
-                            <div className="dataWrapper dataHighlightScroll">
+                            <ScrollContainer className="dataWrapper dataHighlightScroll">
                                 <div className="topIntList instaList">
                                     {
                                         this.state.insta.map((i, k) => {
@@ -953,7 +954,7 @@ class Main extends React.Component {
                                         })
                                     }
                                 </div>
-                            </div>
+                            </ScrollContainer>
                         </section>
 
                         {/* Contact */}

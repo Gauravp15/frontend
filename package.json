@@ -20,6 +20,7 @@
     "react-arc-text-fix": "0.0.0-development",
     "react-dom": "^16.13.1",
     "react-icomoon": "^2.1.5",
+    "react-indiana-drag-scroll": "^1.8.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-ticker": "^1.2.2"
