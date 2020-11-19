@@ -139,6 +139,9 @@ class Header extends React.Component {
                     delay: 0.1,
                     ease: Power4.easeOut
                   }, "close");
+
+            let vh = window.innerHeight * 0.01;
+            this.menuInnerContainer.current.style.setProperty('--vh', `${vh}px`);
     }
 
     scrollToTargets = (e, target) => {
