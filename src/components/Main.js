@@ -69,7 +69,7 @@ import maths from '../static/atulk/maths2.png';
 import productivity from '../static/atulk/productivity1.png';
 import liftmoods from '../static/atulk/liftmoods1.png';
 import equation1 from '../static/equation.png';
-import equationMob from '../static/equationMob.png';
+import equationMob from '../static/equationMob1.png';
 import instacta from '../static/instacta.png';
 import behancecta from '../static/behancecta.png';
 import dribbblecta from '../static/dribbblecta.png';
