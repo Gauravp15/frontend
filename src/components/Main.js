@@ -66,9 +66,10 @@ import twitter from '../static/twitter.svg';
 import intro from '../static/atulk/intro1.png';
 import getintouch from '../static/atulk/getintouch1.png';
 import maths from '../static/atulk/maths2.png';
-import productivity from '../static/atulk/productivity2.png';
+import productivity from '../static/atulk/productivity1.png';
 import liftmoods from '../static/atulk/liftmoods1.png';
 import equation1 from '../static/equation.png';
+import equationMob from '../static/equationMob.png';
 import instacta from '../static/instacta.png';
 import behancecta from '../static/behancecta.png';
 import dribbblecta from '../static/dribbblecta.png';
@@ -589,7 +590,7 @@ class Main extends React.Component {
             navigation: false,
             fixedElements: '.header',
             lockAnchors: true,
-            normalScrollElements: '.testiDescriptionWrapper'
+            normalScrollElements: '.testiDescriptionWrapper, .dataHighlightScroll, .dblScroll'
         };
 
         return (
@@ -660,7 +661,8 @@ class Main extends React.Component {
                                     <div className="sectionLeft">
                                         <p className="introDescription" ref={(e) => { this.addToRefs(e, 'reveal') }}>I am not great at maths but one equation I never get wrong</p>
                                         <div className="equation" ref={(e) => { this.addToRefs(e, 'reveal') }}>
-                                            <img src={equation1} alt="Equation" />
+                                            <img src={equation1} className="equationDesk" alt="Equation" />
+                                            <img src={equationMob} className="equationMob" alt="Equation" />
                                         </div>
                                     </div>
                                     <div className="sectionRight" ref={(e) => { this.addToRefs(e, 'sectionRight') }}>
@@ -674,6 +676,7 @@ class Main extends React.Component {
                                         <div className="atulImg">
                                             <Glitch
                                                 imagePath={maths}
+                                                className={"equationImg"}
                                             />
                                             {/* <img src={maths} alt="Atul Khola - Not good at maths" /> */}
                                         </div>
@@ -924,7 +927,7 @@ class Main extends React.Component {
 
                         <section className="section introSection lightSection" ref={(e) => { this.addToRefs(e, 'section') }} data-anchor="life">
                             <div className="containerRight dFlex">
-                                <div className="titleWrapper blockWrapper">
+                                <div className="titleWrapper blockWrapper workTitle">
                                     <span className="introTitle darkText">&amp; there's so much more to life than</span>
                                     <h2 className="sectionTitle darkText">just work ✨</h2>
                                 </div>

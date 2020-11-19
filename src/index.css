@@ -73,8 +73,11 @@ ul {
   margin-left: auto;
   position: relative;
 }
-.section {
+.main{
   position: relative;
+  /* z-index: 20; */
+}
+.section {
   height: 100vh;
   max-height: 100vh;
 }
@@ -162,7 +165,7 @@ ul {
   right: 0px;
   bottom: 0px;
   background: var(--mainBgColor);
-  z-index: 11;
+  z-index: 100;
 }
 .loader {
   position: absolute;
@@ -183,8 +186,8 @@ ul {
   left: 0px;
   width: 100%;
   max-height: 80px;
-  z-index: 10;
   background: var(--mainBgColor);
+  z-index: 10;
 }
 .headerWrapper {
   display: flex;
@@ -192,10 +195,11 @@ ul {
   align-items: center;
   position: relative;
   padding: 20px 0px;
+  z-index: 30;
 }
 .navList {
   position: relative;
-  margin: 0px 250px 0px 0px;
+  margin: 0px 250px 0px auto;
   display: flex;
 }
 .navItem {
@@ -212,6 +216,178 @@ ul {
 }
 .navItem a:hover, .navItem.active a {
   opacity: 1;
+}
+.mobNav{
+  display: none;
+}
+/* .mobNav{
+  background: var(--mainBgColor);
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 9px 13px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 9px 13px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 9px 13px 0px rgba(0, 0, 0, 0.3);
+} */
+.menuInnerContainer, .menuContainer{
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+.menuInnerContainer{
+  visibility: hidden;
+  z-index: 20;
+}
+.menuContainer{
+  display: flex;
+  align-items: center;
+}
+.mobNavList{
+  display: block;
+  width: 100%;
+}
+.mobNavItem{
+  display: block;
+  padding: 15px 0px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.mobNavItem:last-child{
+  margin-bottom: 0px;
+}
+.mobNavItem a{
+  color: var(--textColor);
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: var(--transition);
+  -webkit-transition: var(--transition);
+  -moz-transition: var(--transition);
+}
+.mobDownloadResume{
+  position: absolute;
+  bottom: 60px;
+  left: 0px;
+  right: 0px;
+}
+.mobDownloadResume a{
+  display: block;
+  padding: 30px 0px;
+  font-size: 1.1em;
+  color: var(--textColor);
+  text-align: center;
+  font-weight: 600;
+  transition: var(--transition);
+  -webkit-transition: var(--transition);
+  -moz-transition: var(--transition);
+  background: linear-gradient(270deg, #6133cc, #e758a5, #ffb57e);
+  background-size: 200% 200%;
+  -webkit-animation: bgGradient 10s ease infinite;
+  -moz-animation: bgGradient 10s ease infinite;
+  animation: bgGradient 10s ease infinite;
+}
+.menuBg{
+  position: absolute;
+  display: none;
+  width: 260%;
+  left: -53%;
+  top: -25%;
+  height: 40%;
+  background-color: var(--mainBgColor);
+}
+.menuBg.middle{
+  top: 25%;
+  left: -57%;
+  transform: rotate(-45deg) scaleY(0);
+}
+.menuBg.top{
+  left: -44%;
+  top: 0;
+  transform: rotate(-45deg) translateY(-150%);
+}
+.menuBg.bottom{
+  top: 100%;
+  transform: rotate(-45deg) translateY(25%);
+  left: -20%;
+}
+.menuTrigger, .closeTrigger{
+  position: absolute;
+  top: 32px;
+  right: 0px;
+  display: none;
+  width: 32px;
+  height: 32px;
+  z-index: 333;
+}
+.menuTrigger:hover .menuTriggerBar:before, .closeTrigger:hover .closeTriggerBar:before{
+  width: 100%;
+}
+.closeTrigger {
+  z-index: 5;
+  top: 42px;
+}
+.menuTriggerBar{
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--textColor);
+  margin-bottom: 6px;
+  position: relative;
+}
+.menuTrigger:before{
+  content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 0%;
+    height: 100%;
+    background-color: var(--mainBgColor);
+    transition: all 0.3s cubic-bezier(.55,0,.1,1);
+    -webkit-transition: all 0.3s cubic-bezier(.55,0,.1,1);
+    -moz-transition: all 0.3s cubic-bezier(.55,0,.1,1);
+}
+.menuTrigger.top{
+  width: 50%;
+}
+.menuTrigger.bottom{
+  width: 50%;
+}
+.closeTriggerBar{
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--textColor);
+  position: relative;
+}
+.closeTriggerBar:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 0%;
+  height: 100%;
+  background-color: var(--textColor);
+  transition: all 0.3s cubic-bezier(.55,0,.1,1);
+  -webkit-transition: all 0.3s cubic-bezier(.55,0,.1,1);
+  -moz-transition: all 0.3s cubic-bezier(.55,0,.1,1);
+}
+.closeTriggerBar.left {
+  transform: translateX(100px) translateY(-100px) rotate(-45deg);
+  -webkit-transform: translateX(100px) translateY(-100px) rotate(-45deg);
+  -moz-transform: translateX(100px) translateY(-100px) rotate(-45deg);
+}
+.closeTriggerBar.right {
+  transform: translateX(-100px) translateY(-100px) rotate(45deg);
+  -webkit-transform: translateX(-100px) translateY(-100px) rotate(45deg);
+  top: -3px;
 }
 .downloadResume {
   position: absolute;
@@ -341,6 +517,9 @@ ul {
   height: 360px;
   margin-top: 60px;
 }
+.equationMob{
+  display: none;
+}
 .questionMark {
   position: absolute;
   width: 60px;
@@ -428,14 +607,14 @@ ul {
   width: 20px;
   height: 70px;
   bottom: 20%;
-  left: 0%;
+  left: 10%;
 }
 .stroke3 {
   position: absolute;
   width: 90px;
   height: 85px;
   top: 50%;
-  left: 10%;
+  left: 20%;
 }
 /* ==========Lift moods============ */
 .liftMoodsRight {
@@ -1265,7 +1444,7 @@ ul {
   .containerRight {
     width: calc(100% - 40px);
   }
-  .dataHighlightScroll{
+  .dataHighlightScroll, .dblScroll, .skillsTitle{
     padding-left: 40px;
   }
   .sectionLeft {
@@ -1317,5 +1496,158 @@ ul {
   }
   .selection{
     top: 5%;
+  }
+}
+@media only screen and (max-width: 1024px){
+  .bulb, .pen, .chat, .colordrop, .selection, .questionMark, .questionMark1, .questionMark2, .triangle, .cone, .algeq, .algeq2, .rope, .barbell, .stroke2, .stroke3, .halo, .pizza1, .pizza2, .pizza3, .pizza4, .hearts, .hand, .csr{
+    display: none;
+  }
+  .sectionWrapper{
+    display: block;
+    padding-top: 150px;
+  }
+  .sectionLeft{
+    margin: 0px auto;
+    max-width: 95%;
+  }
+  .containerRight {
+    width: 100%;
+    padding: 0px 20px;
+  }
+  .sectionRight{
+    max-width: 80%;
+    margin: 20px auto 0px auto;
+    height: 80%;
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+  }
+  .dblScroll, .dataHighlightScroll{
+    padding-left: 20px;
+  }
+  .helloWrapper{
+    padding-top: 0px;
+  }
+}
+@media only screen and (max-width: 768px){
+  .loader{
+    width: 100px;
+    height: 100px;
+  }
+  body{
+    font-size: 14px;
+  }
+  .sectionWrapper{
+    padding-top: 120px;
+  }
+  .highlights{
+    padding: 20px 0px;
+  }
+  .highlightTitle{
+    margin-bottom: 20px;
+  }
+  .atulImg{
+    text-align: center;
+  }
+  .glitchImage{
+    width: 550px;
+    max-width: 100%;
+    margin: 0px auto;
+  }
+  /* .titleWrapper{
+    padding-top: 0px;
+  } */
+  .ctaWrapper{
+    margin-right: 0px;
+  }
+  .navList, .downloadResume{
+    display: none;
+  }
+  .mobNav, .menuBg, .menuTrigger, .closeTrigger, .menuInnerContainer{
+    display: block;
+  }
+  .menuContainer{
+    display: flex;
+  }
+  .socialList, .madeWithLove{
+    position: relative;
+    z-index: 2;
+  }
+  .equation{
+    height: auto;
+    width: 100%;
+  }
+  .equationDesk{
+    display: none;
+  }
+  .equationMob{
+    display: block;
+  }
+  .caseStudyTitleWrapper{
+    font-size: 1.3em;
+  }
+}
+@media only screen and (max-width: 640px){
+  .sectionWrapper{
+    padding-top: 100px;
+  }
+  .introDescription, .bottomSectionTitle, .sectionTitle{
+    font-size: 1.8em;
+  }
+  .sectionRight{
+    max-width: 70%;
+  }
+  .csr circle{
+    transform: scale(0.7);
+  }
+  .introTitle{
+    font-size: 1.3em;
+  }
+  .ctaWrapper{
+    width: 150px;
+    height: 150px;
+  }
+  .equation{
+    margin-top: 30px;
+  }
+  .equationImg{
+    position: relative;
+    left: 30px;
+  }
+  .gym{
+    position: relative;
+    right: 30px;
+  }
+  .ctaArrow{
+    max-width: 40px;
+  }
+  .testiWrapper, .csWrapper, .articlesWrapper{
+    min-width: 300px;
+  }
+}
+@media only screen and (max-width: 480px){
+  .sectionRight{
+    height: 50%;
+    max-width: 80%;
+  }
+  .articleImg{
+    min-height: 210px;
+  }
+  .intWrapper{
+    width: 260px;
+    height: 195px;
+  }
+  .workTitle{
+    max-width: 55%;
+  }
+  .testiTitleWrapper, .authorName{
+    font-size: 1.3em;
+  }
+  .testiDescriptionWrapper{
+    height: 220px;
+  }
+  .authorPos{
+    font-size: 1em;
   }
 }
