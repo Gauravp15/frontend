@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.2766235c.chunk.css",
-    "main.js": "/static/js/main.625cf51b.chunk.js",
-    "main.js.map": "/static/js/main.625cf51b.chunk.js.map",
+    "main.css": "/static/css/main.43874fa5.chunk.css",
+    "main.js": "/static/js/main.6f8567fd.chunk.js",
+    "main.js.map": "/static/js/main.6f8567fd.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.c8a21426.js",
     "runtime-main.js.map": "/static/js/runtime-main.c8a21426.js.map",
     "static/css/2.764ccc25.chunk.css": "/static/css/2.764ccc25.chunk.css",
     "static/js/2.836fab3b.chunk.js": "/static/js/2.836fab3b.chunk.js",
     "static/js/2.836fab3b.chunk.js.map": "/static/js/2.836fab3b.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.a47ebc7f55744599304ed7cdc9c93759.js": "/precache-manifest.a47ebc7f55744599304ed7cdc9c93759.js",
+    "precache-manifest.69bba11e09b668274b1b019e12c2ec41.js": "/precache-manifest.69bba11e09b668274b1b019e12c2ec41.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.764ccc25.chunk.css.map": "/static/css/2.764ccc25.chunk.css.map",
-    "static/css/main.2766235c.chunk.css.map": "/static/css/main.2766235c.chunk.css.map",
+    "static/css/main.43874fa5.chunk.css.map": "/static/css/main.43874fa5.chunk.css.map",
     "static/js/2.836fab3b.chunk.js.LICENSE.txt": "/static/js/2.836fab3b.chunk.js.LICENSE.txt",
     "static/media/algeq.svg": "/static/media/algeq.8bb9f03f.svg",
     "static/media/algeq2.svg": "/static/media/algeq2.263aeaaf.svg",
@@ -30,7 +30,7 @@
     "static/media/dribbble.svg": "/static/media/dribbble.fb8b9a51.svg",
     "static/media/dribbblecta.png": "/static/media/dribbblecta.d446793c.png",
     "static/media/equation.png": "/static/media/equation.6197b59a.png",
-    "static/media/equationMob.png": "/static/media/equationMob.1b1ceae4.png",
+    "static/media/equationMob1.png": "/static/media/equationMob1.b5a3bea4.png",
     "static/media/getintouch1.png": "/static/media/getintouch1.8755caa8.png",
     "static/media/halo.svg": "/static/media/halo.bdbe15cb.svg",
     "static/media/hand.svg": "/static/media/hand.dd7542cf.svg",
@@ -69,7 +69,7 @@
     "static/js/runtime-main.c8a21426.js",
     "static/css/2.764ccc25.chunk.css",
     "static/js/2.836fab3b.chunk.js",
-    "static/css/main.2766235c.chunk.css",
-    "static/js/main.625cf51b.chunk.js"
+    "static/css/main.43874fa5.chunk.css",
+    "static/js/main.6f8567fd.chunk.js"
   ]
 }
