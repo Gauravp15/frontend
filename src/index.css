@@ -952,6 +952,7 @@ ul {
   padding: 10px;
   font-weight: 800;
   position: relative;
+  z-index: 1;
   color: var(--textColor);
   -webkit-animation: rotate 10s linear infinite;
   -moz-animation: rotate 10s linear infinite;
@@ -1173,6 +1174,9 @@ ul {
   }
   .halo {
     top: 24%;
+  }
+  .testiDescription{
+    height: 260px;
   }
 }
 @media only screen and (max-height: 800px) {

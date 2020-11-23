@@ -403,7 +403,7 @@ class Main extends React.Component {
                     let shotData = {};
                     shotData["animated"] = get(i, "content.rendered", "");
                     shotData["thumbnail"] = get(i, "_embedded.wp:featuredmedia.0.source_url", "");
-                    shotData["url"] = get(i, "shot_linkout", "");
+                    shotData["url"] = get(i, "acf.shot_linkout", "");
                     shotData["title"] = get(i, "title.rendered", "");
                     dribbbleShots.push(shotData);
                 });
@@ -790,7 +790,7 @@ class Main extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <ScrollContainer className="dataWrapper dataHighlightScroll">
+                            <ScrollContainer hideScrollbars={false} className="dataWrapper dataHighlightScroll">
                                 {this.state.caseStudies.map((i, k) => {
                                     return (
                                         <CaseStudy
@@ -825,7 +825,7 @@ class Main extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <ScrollContainer className="dataWrapper dataHighlightScroll">
+                            <ScrollContainer hideScrollbars={false} className="dataWrapper dataHighlightScroll">
                                 {this.state.articles.map((i, k) => {
                                     return (
                                         <Articles
@@ -903,7 +903,7 @@ class Main extends React.Component {
                                     <h2 className="sectionTitle">people ❤️</h2>
                                 </div>
                             </div>
-                            <ScrollContainer className="dataWrapper dataHighlightScroll">
+                            <ScrollContainer hideScrollbars={false} className="dataWrapper dataHighlightScroll">
                                 {this.state.testimonials.map((i, k) => {
                                     return (
                                         <Testimonial
@@ -942,7 +942,7 @@ class Main extends React.Component {
                                     <span className="ctaArrow darkText" ref={(e) => { this.addToRefs(e, 'ctaPointer') }}><img src={this.state.instaCta ? hi : pointup} alt={this.state.instaCta ? 'Click' : 'Click here'} />{/* <Icon icon={"arrow-right2"} size={20} /> */}</span>
                                 </div>
                             </div>
-                            <ScrollContainer className="dataWrapper dataHighlightScroll">
+                            <ScrollContainer hideScrollbars={false} className="dataWrapper dataHighlightScroll">
                                 <div className="topIntList instaList">
                                     {
                                         this.state.insta.map((i, k) => {

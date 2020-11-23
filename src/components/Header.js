@@ -203,11 +203,31 @@ class Header extends React.Component {
                         <span className="menuBg bottom" ref={this.menuBgBottom}></span>
                         <div className="menuContainer" ref={this.menuContainer}>
                             <ul className="mobNavList" ref={this.mobNavList}>
-                                <li className="mobNavItem" /* data-menuanchor="about" */><a onClick={(e) => {this.props.fullpageApi.moveTo('about'); this.tlClose.play();}} href="#about">About</a></li>
-                                <li className="mobNavItem" /* data-menuanchor="work" */><a onClick={(e) => {this.props.fullpageApi.moveTo('work'); this.tlClose.play();}} href="#work">Work</a></li>
-                                <li className="mobNavItem" /* data-menuanchor="people" */><a onClick={(e) => {this.props.fullpageApi.moveTo('people'); this.tlClose.play();}} href="#people">People</a></li>
-                                <li className="mobNavItem" /* data-menuanchor="life" */><a onClick={(e) => {this.props.fullpageApi.moveTo('life'); this.tlClose.play();}} href="#life">Life</a></li>
-                                <li className="mobNavItem" /* data-menuanchor="contact" */><a onClick={(e) => {this.props.fullpageApi.moveTo('contact'); this.tlClose.play();}} href="#contact">Contact</a></li>
+                                <li className="mobNavItem" /* data-menuanchor="about" */><a onClick={(e) => {this.props.fullpageApi.moveTo('about'); if(this.tlClose.progress() < 1){
+                                    this.tlClose.play();
+                                }else{
+                                    this.tlClose.restart();
+                                }}} href="#about">About</a></li>
+                                <li className="mobNavItem" /* data-menuanchor="work" */><a onClick={(e) => {this.props.fullpageApi.moveTo('work'); if(this.tlClose.progress() < 1){
+                                    this.tlClose.play();
+                                }else{
+                                    this.tlClose.restart();
+                                }}} href="#work">Work</a></li>
+                                <li className="mobNavItem" /* data-menuanchor="people" */><a onClick={(e) => {this.props.fullpageApi.moveTo('people'); if(this.tlClose.progress() < 1){
+                                    this.tlClose.play();
+                                }else{
+                                    this.tlClose.restart();
+                                }}} href="#people">People</a></li>
+                                <li className="mobNavItem" /* data-menuanchor="life" */><a onClick={(e) => {this.props.fullpageApi.moveTo('life'); if(this.tlClose.progress() < 1){
+                                    this.tlClose.play();
+                                }else{
+                                    this.tlClose.restart();
+                                }}} href="#life">Life</a></li>
+                                <li className="mobNavItem" /* data-menuanchor="contact" */><a onClick={(e) => {this.props.fullpageApi.moveTo('contact'); if(this.tlClose.progress() < 1){
+                                    this.tlClose.play();
+                                }else{
+                                    this.tlClose.restart();
+                                }}} href="#contact">Contact</a></li>
                             </ul>
                             <div className="mobDownloadResume" ref={this.mobDownload}>
                                 <a href="https://pixelandpump.com/wp-content/uploads/2020/10/Atul-Khola1.pdf" data-text="Download Resume" target="_blank" rel="noopener noreferrer" download><span className="resumeText">Download Resume</span></a>
